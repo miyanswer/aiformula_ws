@@ -1,4 +1,5 @@
-.PHONY: all build up down stop restart bash root-bash logs clean gui open-gui
+.PHONY: all build up down stop restart bash root-bash logs clean gui open-gui \
+        yolo-install record extract split train detect
 
 # Default target
 all: up
@@ -41,3 +42,32 @@ logs:
 # Clean build artifacts
 clean:
 	rm -rf build install log
+
+# ==============================================================================
+# YOLO Pipeline Commands
+# ==============================================================================
+
+# Install Python requirements for YOLO and video tools
+yolo-install:
+	pip3 install -r requirements-yolo.txt
+
+# Record 15fps FHD video from webcam
+record:
+	python3 scripts/record_video.py
+
+# Extract training frames from recorded videos
+extract:
+	python3 scripts/extract_frames.py
+
+# Split annotated images/labels and create data.yaml
+split:
+	python3 scripts/split_dataset.py
+
+# Train YOLO model (default: yolo11n.pt, 50 epochs)
+train:
+	python3 scripts/train_yolo.py
+
+# Real-time YOLO detection using webcam
+detect:
+	python3 scripts/detect_webcam.py
+

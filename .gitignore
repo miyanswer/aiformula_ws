@@ -12,3 +12,18 @@ logs/
 
 # OS artifacts
 .DS_Store
+
+# YOLO Data & Model artifacts
+data/
+runs/
+*.pt
+*.onnx
+*.engine
+*.mp4
+*.avi
+*.mov
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
