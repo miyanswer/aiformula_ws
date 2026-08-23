@@ -25,5 +25,6 @@ runs/
 __pycache__/
 *.py[cod]
 .venv/
-env/
+# Tools & standalone apps
+tools/
 

@@ -18,11 +18,12 @@ import cv2
 
 def parse_args():
     parser = argparse.ArgumentParser(description="WebカメラからのFHD 15fps動画録画スクリプト")
+    parser.add_argument("--task", type=str, default="default", help="タスク名 (例: traffic_light, t_junction, crosswalk, jinmen_dog)")
     parser.add_argument("--camera-id", type=int, default=0, help="カメラデバイスID (デフォルト: 0)")
     parser.add_argument("--width", type=int, default=1920, help="解像度 幅 (デフォルト: 1920)")
     parser.add_argument("--height", type=int, default=1080, help="解像度 高さ (デフォルト: 1080)")
     parser.add_argument("--fps", type=float, default=15.0, help="目標FPS (デフォルト: 15.0)")
-    parser.add_argument("--output-dir", type=str, default="data/raw_videos", help="動画保存先ディレクトリ")
+    parser.add_argument("--output-dir", type=str, default="", help="動画保存先ディレクトリ (省略時は data/tasks/<task>/raw_videos)")
     parser.add_argument("--auto-start", action="store_true", help="起動と同時に自動で録画を開始する")
     parser.add_argument("--duration", type=float, default=0, help="自動停止までの秒数 (0の場合は手動停止)")
     return parser.parse_args()
@@ -31,15 +32,22 @@ def parse_args():
 def main():
     args = parse_args()
 
-    os.makedirs(args.output_dir, exist_ok=True)
-    screenshot_dir = os.path.join(args.output_dir, "screenshots")
+    # 保存先ディレクトリの決定
+    if args.output_dir:
+        output_dir = args.output_dir
+    else:
+        output_dir = os.path.join("data", "tasks", args.task, "raw_videos")
+
+    os.makedirs(output_dir, exist_ok=True)
+    screenshot_dir = os.path.join(output_dir, "screenshots")
     os.makedirs(screenshot_dir, exist_ok=True)
 
     print(f"=== Webカメラ録画ツール ===")
+    print(f"タスク名: {args.task}")
     print(f"カメラID: {args.camera_id}")
     print(f"目標解像度: {args.width}x{args.height}")
     print(f"目標FPS: {args.fps}")
-    print(f"保存先: {args.output_dir}")
+    print(f"保存先: {output_dir}")
     print("==========================")
 
     # カメラの初期化 (macOSではAVFoundationバックエンドを推奨)

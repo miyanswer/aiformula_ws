@@ -7,6 +7,7 @@
   - 指定フレーム間隔 (例: 15フレーム毎) または 指定秒間隔 (例: 1秒毎) で抽出
   - 差分があまりない静止画の自動スキップ機能 (オプション: --diff-threshold)
   - 切り出し画像のリサイズ・画質設定
+  - タスク別管理 (--task) 対応
 """
 
 import argparse
@@ -19,8 +20,9 @@ from tqdm import tqdm
 
 def parse_args():
     parser = argparse.ArgumentParser(description="動画からYOLOアノテーション用静止画を切り出すツール")
-    parser.add_argument("--video", type=str, default="data/raw_videos", help="動画ファイルパス または 動画フォルダパス")
-    parser.add_argument("--output-dir", type=str, default="data/extracted_frames", help="切り出し画像の保存先")
+    parser.add_argument("--task", type=str, default="default", help="タスク名 (例: traffic_light, t_junction, crosswalk, jinmen_dog)")
+    parser.add_argument("--video", type=str, default="", help="動画ファイルパス または 動画フォルダパス (省略時は data/tasks/<task>/raw_videos)")
+    parser.add_argument("--output-dir", type=str, default="", help="切り出し画像の保存先 (省略時は data/tasks/<task>/extracted_frames)")
     parser.add_argument("--every-sec", type=float, default=1.0, help="何秒ごとに1枚切り出すか (例: 1.0 = 1秒に1枚)")
     parser.add_argument("--frame-interval", type=int, default=0, help="フレーム間隔指定 (0の場合は --every-sec を使用)")
     parser.add_argument("--prefix", type=str, default="frame", help="保存画像のファイル名プレフィックス")
@@ -94,35 +96,49 @@ def process_video(video_path, output_dir, args):
 
 def main():
     args = parse_args()
-    os.makedirs(args.output_dir, exist_ok=True)
 
-    if os.path.isfile(args.video):
-        video_files = [args.video]
-    elif os.path.isdir(args.video):
+    # 入出力パスの解決
+    if args.video:
+        video_src = args.video
+    else:
+        video_src = os.path.join("data", "tasks", args.task, "raw_videos")
+
+    if args.output_dir:
+        output_dir = args.output_dir
+    else:
+        output_dir = os.path.join("data", "tasks", args.task, "extracted_frames")
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    if os.path.isfile(video_src):
+        video_files = [video_src]
+    elif os.path.isdir(video_src):
         extensions = ["*.mp4", "*.avi", "*.mov", "*.mkv", "*.MP4", "*.MOV"]
         video_files = []
         for ext in extensions:
-            video_files.extend(glob.glob(os.path.join(args.video, ext)))
+            video_files.extend(glob.glob(os.path.join(video_src, ext)))
         video_files = sorted(video_files)
     else:
-        print(f"[エラー] 指定されたパスが見つかりません: {args.video}")
+        print(f"[エラー] 指定されたパスが見つかりません: {video_src}")
         return 1
 
     if not video_files:
-        print(f"[警告] 処理対象の動画ファイルが見つかりませんでした: {args.video}")
+        print(f"[警告] 処理対象の動画ファイルが見つかりませんでした: {video_src}")
+        print(f"💡 `make record TASK={args.task}` で動画を撮影してください。")
         return 1
 
     print(f"=== フレーム切り出しツール ===")
+    print(f"タスク名: {args.task}")
     print(f"対象動画数: {len(video_files)}")
-    print(f"出力先: {args.output_dir}")
+    print(f"出力先: {output_dir}")
     print("=============================")
 
     total_saved = 0
     for v_path in video_files:
-        total_saved += process_video(v_path, args.output_dir, args)
+        total_saved += process_video(v_path, output_dir, args)
 
     print(f"\n[完了] 全動画から合計 {total_saved} 枚の画像を抽出しました。")
-    print(f"次のステップ: アノテーションツール (Roboflow / AnyLabeling / Labelme) でラベル付けを行ってください。")
+    print(f"次のステップ: `make label TASK={args.task}` でアノテーションを行ってください。")
     return 0
 
 

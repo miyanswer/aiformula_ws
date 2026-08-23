@@ -103,119 +103,125 @@ source install/setup.bash
 
 ```
 aiformula_ws/
-├── .devcontainer/
-│   └── devcontainer.json   # VS Code / Dev Container 設定
-├── docker/
-│   ├── Dockerfile          # ROS 2 Humble + noVNC Dockerfile
-│   └── entrypoint.sh       # コンテナ起動時エントリポイント (GUIサービス自動起動)
-├── src/                    # ROS 2 パッケージ配置用ディレクトリ
-├── scripts/                # YOLO 物体認識 & データセット用スクリプト集
-│   ├── record_video.py     # Webカメラ FHD 15fps 録画ツール
-│   ├── extract_frames.py   # 動画からの静止画フレーム切り出しツール
-│   ├── split_dataset.py    # YOLOデータセット自動分割 & data.yaml 生成
-│   ├── train_yolo.py       # YOLOv8 / YOLOv11 ファインチューニング学習
-│   └── detect_webcam.py    # リアルタイムWebカメラ物体認識テスト
-├── compose.yaml            # Docker Compose 設定 (ポート8080開放)
-├── Makefile                # コマンドショートカット
-├── requirements-yolo.txt   # YOLO パイプライン用 Python 依存関係
+├── data/
+│   └── tasks/
+│       ├── jinmen_dog/          # 人面犬認識タスク
+│       │   ├── raw_videos/      # 撮影動画
+│       │   ├── extracted_frames/# 抽出画像 & AnyLabeling .json / .txt
+│       │   └── dataset/         # 分割済みYOLOデータ (data.yaml, train, val)
+│       ├── traffic_light/       # 信号機認識タスク
+│       ├── t_junction/          # T字路標示認識タスク
+│       └── crosswalk/           # 横断歩道認識タスク
+├── models/                      # 学習済みベストモデルの集約ディレクトリ
+│   ├── jinmen_dog.pt            # 人面犬の学習済みモデル
+│   ├── traffic_light.pt         # 信号機の学習済みモデル (学習後)
+│   ├── t_junction.pt            # T字路標示の学習済みモデル (学習後)
+│   └── crosswalk.pt             # 横断歩道の学習済みモデル (学習後)
+├── scripts/                     # YOLO 物体認識 & データセット用スクリプト集
+│   ├── record_video.py          # Webカメラ FHD 15fps 録画ツール (--task 対応)
+│   ├── extract_frames.py        # 静止画フレーム切り出しツール (--task 対応)
+│   ├── auto_annotate.py         # 1枚ラベリングから全自動アノテーション (--task 対応)
+│   ├── split_dataset.py         # YOLOデータセット自動分割 & data.yaml 生成 (--task 対応)
+│   ├── train_yolo.py            # YOLOv11 ファインチューニング学習 (--task 対応)
+│   └── detect_webcam.py         # リアルタイムWebカメラ物体認識テスト (--task 対応)
+├── Makefile                     # コマンドショートカット (TASK=... 対応)
+├── requirements-yolo.txt        # YOLO パイプライン用 Python 依存関係
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🎯 YOLO 物体認識 学習パイプライン
+## 🎯 タスク別 YOLO 物体認識 学習パイプライン
 
-Webカメラ（FHD 15fps）で撮影した動画から、YOLO（YOLOv8 / YOLOv11）で物体認識モデルを学習・推論する一連のワークフローです。
+信号機（`traffic_light`）、T字路（`t_junction`）、横断歩道（`crosswalk`）、人面犬（`jinmen_dog`）など、**タスク名（`TASK`）を指定するだけ**で、それぞれのデータセットとモデルを完全に分離して独立管理できます。
 
-### 1. 依存ライブラリのインストール (ホスト側 / ローカル)
+### 1. 依存ライブラリのインストール (初回のみ)
 
 ```bash
-pip3 install -r requirements-yolo.txt
-# または
 make yolo-install
 ```
 
 ---
 
-### 2. Webカメラで 15fps, FHD (1920x1080) 動画を撮影
+### 2. Webカメラで動画を撮影
+
+認識させたい対象（例: 信号機 `traffic_light`）をWebカメラで撮影します。
 
 ```bash
-python3 scripts/record_video.py
-# または
-make record
+# 信号機を撮影する場合
+make record TASK=traffic_light
+
+# T字路標示を撮影する場合
+make record TASK=t_junction
+
+# 横断歩道を撮影する場合
+make record TASK=crosswalk
 ```
-- **操作方法**:
-  - `[r]`: 録画の開始 / 停止
-  - `[s]`: 現在のフレームをスクリーンショット保存
-  - `[q]`: 終了
-- 撮影された動画は `data/raw_videos/` に自動保存されます。
+- **操作方法**: `[r]` で録画開始/停止、`[s]` でスクショ、`[q]` で終了。
+- 動画は自動的に `data/tasks/<TASK>/raw_videos/` に保存されます。
 
 ---
 
 ### 3. 動画から学習用フレーム（静止画）を抽出
 
-動画全体を1コマずつアノテーションすると重複が多いため、**1秒に1枚**（または15フレームごと）の間隔で画像を自動抽出します。
-
 ```bash
-python3 scripts/extract_frames.py --every-sec 1.0
-# または
-make extract
+make extract TASK=traffic_light
 ```
-- 切り出された画像は `data/extracted_frames/` に保存されます。
+- 切り出された画像は `data/tasks/<TASK>/extracted_frames/` に自動保存されます。
 
 ---
 
 ### 4. アノテーション（ラベル付け）
 
-抽出した画像に対して、バウンディングボックス（矩形）のラベル付けを行います。
+#### ⚡ おすすめ: AnyLabeling (SAM 2 AIアシスト)
+```bash
+make label TASK=traffic_light
+```
+1. 上部メニューの **「Auto-Labeling (AI)」** をONにし、**`Segment Anything 2 (Hiera-Tiny)`** を選択。
+2. 物体（信号機など）を **左クリック** するとAIが自動で綺麗に輪郭をハイライトします。
+3. **`Space`** を押して確定し、クラス名（例: `red`, `green`, `yellow`）を入力。
+4. **`D`** キーで次の画像へ進みます（自動保存されます）。
 
-#### おすすめアノテーションツール:
-1. **[AnyLabeling](https://github.com/vietanhdev/anylabeling)** (AI自動アノテーション対応・オフラインで超高速)
-2. **[Roboflow](https://roboflow.com/)** (Webブラウザでチーム作業・YOLOフォーマット自動出力)
-3. **[Labelme](https://github.com/labelmeai/labelme)** / **YOLO-Annotation-Tool**
-
-> [!TIP]
-> アノテーション完了後、画像（`.jpg`）とYOLO形式のラベル（`.txt`）を `data/annotated/` ディレクトリに配置してください。
+#### (参考) 1枚ラベリングからの全自動トラッキングアノテーション
+```bash
+make auto-annotate TASK=traffic_light
+```
 
 ---
 
 ### 5. データセットの分割 (Train / Val) & `data.yaml` 生成
 
-アノテーション済みデータを `train` (80%) と `val` (20%) に自動分割し、YOLO設定ファイル `data.yaml` を生成します。
+AnyLabeling の `.json` や `.txt` を自動検出し、80%の訓練データと20%の検証データに自動分割します。
 
 ```bash
-# 例: カラーコーン (blue, yellow, orange) を認識させたい場合
-python3 scripts/split_dataset.py --classes "cone_blue,cone_yellow,cone_orange"
-# または
-make split
+make split TASK=traffic_light
 ```
-- 出力先: `data/dataset/` (`train/`, `val/`, `data.yaml`)
+- 出力先: `data/tasks/<TASK>/dataset/` (`data.yaml`, `train/`, `val/`)
 
 ---
 
 ### 6. YOLO モデルの学習 (Fine-Tuning)
 
-Apple Silicon (MPS) または NVIDIA GPU (CUDA) を自動検出して高速学習します。
+Apple Silicon GPU (`mps`) で高速に学習（約1〜2分）します。
 
 ```bash
-# デフォルト: YOLO11n, 50エポック
-python3 scripts/train_yolo.py --epochs 50 --imgsz 640
-# または
-make train
+make train TASK=traffic_light
 ```
-- 学習が完了すると、最高精度モデルが `runs/train/yolo_custom/weights/best.pt` に保存されます。
+- 学習が完了すると、最高精度のモデルが **`models/<TASK>.pt`**（例: `models/traffic_light.pt`）に自動保存・集約されます。
 
 ---
 
-### 7. 学習済みモデルでリアルタイム Webカメラ物体認識テスト
-
-学習したモデルを使って、Webカメラ映像でリアルタイムに物体認識をテストします。
+### 7. 学習済みモデルでリアルタイム Webカメラ認識テスト
 
 ```bash
-python3 scripts/detect_webcam.py --model runs/train/yolo_custom/weights/best.pt
-# または
+# 信号機モデルでテスト
+make detect TASK=traffic_light
+
+# 人面犬モデルでテスト
+make detect TASK=jinmen_dog
+
+# TASKを省略すると、作成済みモデル一覧から番号で選べます！
 make detect
 ```
-- 画面上に検出枠、クラス名、信頼度スコア、推論ミリ秒/FPSが表示されます。
 
