@@ -9,6 +9,7 @@ Docker / Dev Container 上で動作する ROS 2 Humble の開発環境です。
 - **ユーザー**: `rosuser` (sudo 権限あり・パスワード不要)
 - **対応アーキテクチャ**: Apple Silicon (arm64) / Intel & AMD (x86_64)
 - **Web GUI (noVNC)**: ブラウザから RViz2 / rqt などの画面を表示可能 (`http://localhost:8080`)
+- **📚 参考設計資料**: [AI Formula OIT 2026 システム詳細解説](file:///Users/miyanswer/aiformula_ws/docs/reference_ai_formula_oit_2026/README.md) (システム構成・トピック一覧・AI/制御ロジック等)
 
 ---
 
