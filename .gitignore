@@ -28,3 +28,6 @@ __pycache__/
 # Tools & standalone apps
 tools/
 
+mp4/
+jpeg/
+
