@@ -104,14 +104,88 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Webカメラ/動画でのリアルタイムYOLO物体認識")
     parser.add_argument("--task", type=str, default="", help="タスク名 (例: traffic_light, t_junction, crosswalk, jinmen_dog)")
     parser.add_argument("--model", type=str, default="yolo11n.pt", help="モデル重みファイルパス (省略時はタスク名から自動解決)")
-    parser.add_argument("--source", type=str, default="0", help="カメラID (例: 0) または 動画ファイルパス (例: data/raw_videos/sample.mp4)")
+    parser.add_argument("--source", type=str, default="0", help="カメラID (例: 0)、動画ファイルパス、または静止画像ファイル/フォルダパス")
     parser.add_argument("--conf", type=float, default=0.40, help="信頼度しきい値 (0.0〜1.0)")
     parser.add_argument("--iou", type=float, default=0.45, help="NMS IoUしきい値")
     parser.add_argument("--imgsz", type=int, default=640, help="推論画像サイズ (640推奨)")
     parser.add_argument("--device", type=str, default="", help="実行デバイス (mps / cuda / cpu)")
-    parser.add_argument("--save", action="store_true", help="推論結果の動画を保存する")
+    parser.add_argument("--save", action="store_true", help="推論結果の動画/画像を保存する")
     parser.add_argument("--output-dir", type=str, default="data/detection_outputs", help="保存先ディレクトリ")
     return parser.parse_args()
+
+
+def infer_images(model, image_paths, args, device):
+    """静止画像群に対する推論とプレビュー"""
+    if not image_paths:
+        print("[エラー] 処理対象の画像が見つかりません。")
+        return 1
+
+    window_name = f"YOLO Image Detection - {len(image_paths)} images"
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, 1280, 720)
+
+    current_idx = 0
+    print(f"\n[静止画推論モード] 合計 {len(image_paths)} 枚の画像")
+    print("操作方法:")
+    print("  [d] または [SPACE]: 次の画像")
+    print("  [a]: 前の画像")
+    print("  [s]: 検出結果画像を保存")
+    print("  [q] または [ESC]: 終了\n")
+
+    while 0 <= current_idx < len(image_paths):
+        img_path = image_paths[current_idx]
+        img = cv2.imread(img_path)
+        if img is None:
+            print(f"[警告] 画像を読み込めませんでした: {img_path}")
+            current_idx += 1
+            continue
+
+        infer_start = time.time()
+        results = model.predict(
+            source=img,
+            conf=args.conf,
+            iou=args.iou,
+            imgsz=args.imgsz,
+            device=device,
+            verbose=False,
+        )
+        infer_ms = (time.time() - infer_start) * 1000
+
+        annotated_frame = np.ascontiguousarray(results[0].plot().copy())
+        boxes = results[0].boxes
+        n_detections = len(boxes) if boxes is not None else 0
+
+        info_line = f"[{current_idx+1}/{len(image_paths)}] {os.path.basename(img_path)} | Infer: {infer_ms:.1f}ms | Detections: {n_detections}"
+        cv2.putText(annotated_frame, info_line, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2, cv2.LINE_AA)
+
+        if args.save:
+            ss_dir = os.path.join(args.output_dir, "annotated_images")
+            os.makedirs(ss_dir, exist_ok=True)
+            ss_path = os.path.join(ss_dir, f"detected_{os.path.basename(img_path)}")
+            cv2.imwrite(ss_path, annotated_frame)
+
+        cv2.imshow(window_name, annotated_frame)
+        key = cv2.waitKey(0) & 0xFF
+
+        if key == ord("q") or key == 27:
+            break
+        elif key in (ord("d"), ord("n"), ord(" ")):
+            if current_idx < len(image_paths) - 1:
+                current_idx += 1
+            else:
+                print("[情報] 最後の画像です。")
+        elif key in (ord("a"), ord("p")):
+            if current_idx > 0:
+                current_idx -= 1
+        elif key == ord("s"):
+            ss_dir = os.path.join(args.output_dir, "annotated_images")
+            os.makedirs(ss_dir, exist_ok=True)
+            ss_path = os.path.join(ss_dir, f"detected_{os.path.basename(img_path)}")
+            cv2.imwrite(ss_path, annotated_frame)
+            print(f"📸 検出結果画像を保存しました: {ss_path}")
+
+    cv2.destroyAllWindows()
+    return 0
 
 
 def main():
@@ -139,6 +213,19 @@ def main():
 
     # モデルのロード
     model = YOLO(model_path)
+
+    # 静止画像ファイルまたは画像ディレクトリの判定
+    img_exts = (".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tiff", ".JPG", ".JPEG", ".PNG", ".BMP", ".WEBP")
+    if os.path.isfile(args.source) and os.path.splitext(args.source)[1] in img_exts:
+        return infer_images(model, [args.source], args, device)
+    elif os.path.isdir(args.source):
+        found_imgs = []
+        for root, _, files in os.walk(args.source):
+            for f in sorted(files):
+                if os.path.splitext(f)[1] in img_exts:
+                    found_imgs.append(os.path.join(root, f))
+        if found_imgs:
+            return infer_images(model, sorted(found_imgs), args, device)
 
     # 入力ソースの判定
     is_cam = args.source.isdigit()

@@ -372,13 +372,21 @@ def main():
     args = parser.parse_args()
 
     # 入出力パスの解決
-    input_dir = Path(args.input_dir) if args.input_dir else Path(f"data/tasks/{args.task}/extracted_frames")
+    if not args.input_dir:
+        input_dir = Path(f"data/tasks/{args.task}/extracted_frames")
+        if (not input_dir.exists() or not any(input_dir.glob("*.*"))):
+            raw_img_dir = Path(f"data/tasks/{args.task}/raw_images")
+            if raw_img_dir.exists() and any(raw_img_dir.glob("*.*")):
+                input_dir = raw_img_dir
+    else:
+        input_dir = Path(args.input_dir)
+
     output_dir = Path(args.output_dir) if args.output_dir else Path(f"data/tasks/{args.task}/annotated")
     output_images_dir = output_dir / "images"
     output_labels_dir = output_dir / "labels"
 
     # 対象画像の取得
-    image_exts = ["*.jpg", "*.jpeg", "*.png", "*.bmp", "*.JPG", "*.PNG"]
+    image_exts = ["*.jpg", "*.jpeg", "*.png", "*.bmp", "*.webp", "*.tiff", "*.JPG", "*.JPEG", "*.PNG", "*.BMP", "*.WEBP"]
     image_paths = []
     for ext in image_exts:
         image_paths.extend(sorted(input_dir.glob(ext)))
@@ -387,7 +395,7 @@ def main():
 
     if not image_paths:
         print(f"❌ エラー: '{input_dir}' に画像ファイルが見つかりません。")
-        print(f"💡 先に `make extract` (または `python3 scripts/extract_frames.py`) で画像を抽出してください。")
+        print(f"💡 `make extract TASK={args.task}` で動画や静止画像を取り込むか、'data/tasks/{args.task}/raw_images' に画像を配置してください。")
         return
 
     print("=" * 70)

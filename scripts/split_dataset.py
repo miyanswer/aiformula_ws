@@ -77,6 +77,7 @@ def find_dataset_sources(source_dir_arg: str, task: str):
     if task:
         candidates.extend([
             f"data/tasks/{task}/extracted_frames",
+            f"data/tasks/{task}/raw_images",
             f"data/tasks/{task}/annotated",
             f"data/tasks/{task}",
         ])
@@ -88,9 +89,10 @@ def find_dataset_sources(source_dir_arg: str, task: str):
                 t_path = os.path.join(tasks_dir, t_name)
                 if os.path.isdir(t_path) and not t_name.startswith("."):
                     candidates.append(f"data/tasks/{t_name}/extracted_frames")
+                    candidates.append(f"data/tasks/{t_name}/raw_images")
                     candidates.append(f"data/tasks/{t_name}/annotated")
 
-        candidates.extend(["data/extracted_frames", "data/annotated"])
+        candidates.extend(["data/extracted_frames", "data/raw_images", "data/annotated"])
 
     for c_dir in candidates:
         if not os.path.exists(c_dir):
@@ -116,9 +118,9 @@ def find_dataset_sources(source_dir_arg: str, task: str):
     return candidates[0] if candidates else "data/extracted_frames"
 
 
-def process_dataset(source_dir: str, explicit_classes: list):
+def process_dataset(source_dir: str, explicit_classes: list, task_name: str = ""):
     """画像とアノテーション（.txt または .json）を走査し、YOLO形式ペアとクラスリストを構築"""
-    img_exts = (".jpg", ".jpeg", ".png", ".bmp", ".JPG", ".JPEG", ".PNG")
+    img_exts = (".jpg", ".jpeg", ".png", ".bmp", ".webp", ".JPG", ".JPEG", ".PNG", ".BMP", ".WEBP")
     
     # classes.txt があれば読み込み
     classes_file = os.path.join(source_dir, "classes.txt")
@@ -193,11 +195,34 @@ def process_dataset(source_dir: str, explicit_classes: list):
         else:
             unlabeled.append(img_path)
 
-    # デフォルトクラスがまだない場合のフォールバック
-    if not detected_classes:
-        detected_classes = ["object"]
+    # 実際にJSONやTXTに存在したラベルのみを抽出
+    actual_labels = []
+    for pair in valid_pairs:
+        fmt = pair[1]
+        if fmt == "json":
+            _, shapes, _, _ = pair[2]
+            for s in shapes:
+                lbl = s.get("label", "").strip()
+                if lbl and lbl not in actual_labels:
+                    actual_labels.append(lbl)
 
-    return valid_pairs, unlabeled, detected_classes
+    # 明示的なクラス指定(--classes)があればそれを優先、なければ実際に使われたラベル、なければclasses.txt、最後にタスク名のデフォルト
+    if explicit_classes:
+        final_classes = explicit_classes
+    elif actual_labels:
+        final_classes = actual_labels
+    elif detected_classes:
+        final_classes = detected_classes
+    elif task_name == "traffic_light_red":
+        final_classes = ["traffic_light_red"]
+    elif task_name == "traffic_light_green":
+        final_classes = ["traffic_light_green"]
+    elif task_name == "traffic_light":
+        final_classes = ["red", "green"]
+    else:
+        final_classes = ["object"]
+
+    return valid_pairs, unlabeled, final_classes
 
 
 def main():
@@ -229,7 +254,7 @@ def main():
         output_dir = f"data/tasks/{task_name}/dataset"
 
     explicit_classes = [c.strip() for c in args.classes.split(",") if c.strip()] if args.classes else []
-    pairs, unlabeled, classes = process_dataset(source_dir, explicit_classes)
+    pairs, unlabeled, classes = process_dataset(source_dir, explicit_classes, task_name)
 
     print("=" * 60)
     print("=== YOLO データセット自動分割 & 変換ツール ===")
@@ -261,8 +286,11 @@ def main():
 
     print(f"📊 分割結果: Train = {len(train_pairs)} 枚, Val = {len(val_pairs)} 枚")
 
-    # 出力先ディレクトリの作成
+    # 出力先ディレクトリの初期化（古いキャッシュやゴミファイルを完全クリア）
     for split in ["train", "val"]:
+        split_dir = os.path.join(output_dir, split)
+        if os.path.exists(split_dir):
+            shutil.rmtree(split_dir)
         os.makedirs(os.path.join(output_dir, split, "images"), exist_ok=True)
         os.makedirs(os.path.join(output_dir, split, "labels"), exist_ok=True)
 

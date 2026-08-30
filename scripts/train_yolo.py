@@ -116,6 +116,17 @@ def main():
     print(f"\n[1/3] ベースモデル '{args.model}' をロード中...")
     model = YOLO(args.model)
 
+    # 古い labels.cache が残っているとクラス数不整合でクラッシュするため削除
+    dataset_dir = os.path.dirname(os.path.abspath(data_yaml))
+    for root, _, files in os.walk(dataset_dir):
+        for f in files:
+            if f.endswith(".cache"):
+                cache_path = os.path.join(root, f)
+                try:
+                    os.remove(cache_path)
+                except Exception:
+                    pass
+
     # 学習の実行
     print(f"\n[2/3] 学習を開始します ({args.epochs} epochs)...")
     results = model.train(
@@ -131,7 +142,24 @@ def main():
         verbose=True,
     )
 
-    best_weight = os.path.join(args.project, exp_name, "weights", "best.pt")
+    # 学習結果ディレクトリから best.pt を探索
+    best_weight = None
+    save_dir = getattr(results, "save_dir", None)
+    candidates = []
+    if save_dir:
+        candidates.append(os.path.join(str(save_dir), "weights", "best.pt"))
+    candidates.extend([
+        os.path.join(args.project, exp_name, "weights", "best.pt"),
+        os.path.join("runs", "detect", args.project, exp_name, "weights", "best.pt"),
+        f"runs/detect/runs/train/{exp_name}/weights/best.pt",
+    ])
+    for c in candidates:
+        if os.path.isfile(c):
+            best_weight = c
+            break
+
+    if not best_weight:
+        best_weight = os.path.join(args.project, exp_name, "weights", "best.pt")
     
     # models ディレクトリへの集約保存
     os.makedirs("models", exist_ok=True)

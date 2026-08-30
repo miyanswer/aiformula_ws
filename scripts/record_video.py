@@ -92,7 +92,7 @@ def main():
     def start_recording():
         nonlocal writer, is_recording, record_start_time, recorded_frames, current_video_path
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        current_video_path = os.path.join(args.output_dir, f"video_{timestamp}_{actual_width}x{actual_height}_{int(args.fps)}fps.mp4")
+        current_video_path = os.path.join(output_dir, f"video_{timestamp}_{actual_width}x{actual_height}_{int(args.fps)}fps.mp4")
         writer = cv2.VideoWriter(current_video_path, fourcc, args.fps, (actual_width, actual_height))
         is_recording = True
         record_start_time = time.time()

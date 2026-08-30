@@ -57,9 +57,13 @@ yolo-install:
 record:
 	python3 scripts/record_video.py $(if $(TASK),--task $(TASK),)
 
-# Extract training frames from recorded videos (e.g. make extract TASK=traffic_light)
+# Extract training frames from videos and import static images (e.g. make extract TASK=traffic_light)
 extract:
 	python3 scripts/extract_frames.py $(if $(TASK),--task $(TASK),)
+
+# Import static images from raw_images/ (e.g. make import-images TASK=traffic_light)
+import-images:
+	python3 scripts/extract_frames.py $(if $(TASK),--task $(TASK),) --video ""
 
 # One-Shot Auto-Annotation (Label 1st image, auto-annotate all other frames for free)
 auto-annotate:
@@ -69,12 +73,17 @@ auto-annotate:
 auto-annotate-sam:
 	python3 scripts/auto_annotate.py --use-sam $(if $(TASK),--task $(TASK),)
 
+# Pseudo-labeling / Auto-labeling with trained YOLO model (Fast auto-labeling for remaining frames)
+pseudo-label auto-label:
+	python3 scripts/pseudo_label.py $(if $(TASK),--task $(TASK),)
+
 # Launch AnyLabeling annotation tool for manual labeling
 label:
 	@if [ -n "$(TASK)" ]; then \
-		mkdir -p data/tasks/$(TASK)/extracted_frames; \
+		mkdir -p data/tasks/$(TASK)/raw_images data/tasks/$(TASK)/raw_videos data/tasks/$(TASK)/extracted_frames; \
 		python3 -m anylabeling.app data/tasks/$(TASK)/extracted_frames; \
 	else \
+		mkdir -p data/tasks/jinmen_dog/raw_images data/tasks/jinmen_dog/raw_videos data/tasks/jinmen_dog/extracted_frames; \
 		python3 -m anylabeling.app data/tasks/jinmen_dog/extracted_frames; \
 	fi
 
@@ -86,7 +95,14 @@ split:
 train:
 	python3 scripts/train_yolo.py $(if $(TASK),--task $(TASK),)
 
+VIDEO ?=
+SAVE ?=
+
 # Real-time YOLO detection using webcam (e.g. make detect TASK=traffic_light)
 detect:
 	python3 scripts/detect_webcam.py $(if $(TASK),--task $(TASK),)
+
+# Test YOLO detection on video files with playback & controls (e.g. make detect-video TASK=traffic_light)
+detect-video:
+	python3 scripts/detect_video.py $(if $(TASK),--task $(TASK),) $(if $(VIDEO),--video $(VIDEO),) $(if $(SAVE),--save,)
 
