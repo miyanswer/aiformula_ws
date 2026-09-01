@@ -33,7 +33,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     x11vnc \
     libgl1-mesa-dri \
     libgl1-mesa-glx \
+    libasio-dev \
+    ros-humble-can-msgs \
+    ros-humble-diagnostic-updater \
+    ros-humble-geographic-msgs \
+    ros-humble-joint-state-publisher \
+    ros-humble-joint-state-publisher-gui \
+    ros-humble-nmea-msgs \
+    ros-humble-robot-localization \
+    ros-humble-teleop-twist-keyboard \
+    ros-humble-xacro \
     && rm -rf /var/lib/apt/lists/*
+
+# Install AI / Perception dependencies
+RUN pip3 install --no-cache-dir \
+    "setuptools<70.0.0" \
+    "numpy<2.0.0" \
+    torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    yacs \
+    scipy \
+    tqdm \
+    tensorboardX \
+    seaborn
 
 # Setup noVNC default index
 RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html 2>/dev/null || true
@@ -72,7 +93,7 @@ RUN sed -i '1i source /opt/ros/humble/setup.bash' /home/$USERNAME/.bashrc \
     && echo "if [ -f /aiformula_ws/install/setup.bash ]; then source /aiformula_ws/install/setup.bash; fi" >> /home/$USERNAME/.bashrc \
     && echo "eval \"\$(register-python-argcomplete3 ros2)\"" >> /home/$USERNAME/.bashrc \
     && echo "eval \"\$(register-python-argcomplete3 colcon)\"" >> /home/$USERNAME/.bashrc \
-    && echo "export ROS_DOMAIN_ID=0" >> /home/$USERNAME/.bashrc
+    && echo "export ROS_DOMAIN_ID=100" >> /home/$USERNAME/.bashrc
 
 # Set default shell environment variables
 ENV ROS_DISTRO=humble

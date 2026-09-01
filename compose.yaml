@@ -17,7 +17,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - ROS_DOMAIN_ID=0
+      - ROS_DOMAIN_ID=100
       - PYTHONUNBUFFERED=1
       - HISTFILE=/home/rosuser/.bash_history_dir/.bash_history
       - DISPLAY=:1

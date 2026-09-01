@@ -179,9 +179,13 @@ make extract TASK=traffic_light_red
 
 # 青信号のデータを取り込み
 make extract TASK=traffic_light_green
+
+# T字路や横断歩道など、道路面を俯瞰 (Bird's Eye View / IPM) 視点に変換して取り込み
+make extract-bev TASK=t_junction
 ```
+- **道路面 BEV (俯瞰視点 / IPM) 変換**: `--bev` または `make extract-bev` を指定すると、車載カメラの透視投影歪みを補正し、真上から見下ろした俯瞰画像に自動変換して抽出します（ガンマ補正による明度最適化、バンパー映り込み除去、BEV動画生成にも対応）。
 - **スマホ写真のEXIF回転自動補正**: 縦向き・横向き写真の向きを自動判定して正立させます。
-- **フレーム名と既存データの保持**: 切り出されるファイル名には動画ファイル名が含まれる（`frame_<動画名>_<番号>.jpg`）ため、**後から新しい動画を追加して extract しても、既存フレームや作成済みアノテーション（`.json` / `.txt`）が上書き・破損することはありません**。
+- **フレーム名と既存データの保持**: 切り出されるファイル名には動画ファイル名が含まれる（`frame_<動画名>_<番号>.jpg` / `frame_bev_<動画名>_<番号>.jpg`）ため、**後から新しい動画を追加して extract しても、既存フレームや作成済みアノテーション（`.json` / `.txt`）が上書き・破損することはありません**。
 - **新規動画をまとめて追加した場合の切り出し方法**:
   - **方法1 (一番簡単)**: `data/tasks/<TASK>/raw_videos/` に複数動画をそのまま放り込み、`make extract TASK=traffic_light_red` を実行（フォルダ内の全動画から自動抽出されます）。
   - **方法2 (既存動画の再走査をスキップしたい場合)**: 新規動画だけを一時フォルダ（例: `data/tasks/<TASK>/raw_videos/new_batch/` など）にまとめ、フォルダパスを指定:
@@ -360,5 +364,70 @@ make detect-video TASK=traffic_light_red SAVE=1
 - **`[+]` / `[-]`**: 信頼度閾値（Confidence）をリアルタイムで調整（±0.05）
 - **`[s]`**: 現在の検出フレームをスクリーンショット保存
 - **`[q]` / `[ESC]`**: 終了
+
+---
+
+## 🛣️ YOLOP 白線認識モデルの追加学習（Fine-Tuning）
+
+`mp4/` 内の走行動画を使って、コースの白線検知モデル（`object_road_detector` 用）をさらに高精度化するパイプラインです。
+
+### 1. 動画からデータセット抽出 & 初期ラベル生成
+```bash
+make prepare-yolop-data
+# または特定動画のみ指定
+python3 scripts/prepare_yolop_dataset.py --video-file mp4/shihou_video_2026_08_24_13_51_47.mp4
+```
+> `data/yolop_dataset/` 配下に画像（`images/`）と白線マスク（`lane_masks/`）が train/val に自動生成されます。
+
+### 2. ファインチューニング（追加学習）を実行
+
+#### 🔹 【通常学習】
+```bash
+make train-yolop
+```
+
+#### 🔹 【方法 A: 上部黒塗り学習（安全＆ノイズ完全カット）】
+画像サイズ・アスペクト比は維持したまま、空や人物の上部領域（45%）をマスクして学習します。
+```bash
+# 既存マスク画像の上部45%を一括黒塗り
+make mask-top
+
+# または学習時にオンザフライで上部をマスク
+make train-yolop-mask
+```
+
+#### 🔹 【方法 B: 下半分クロップ学習（路面解像度2倍・高精度）】
+道路面（下部55%）のみを切り出して 640x640 に引き伸ばして学習します。
+```bash
+# 下部領域データセットを作成
+make crop-bottom
+
+# または学習時にオンザフライで下部領域を切り出して学習
+make train-yolop-crop
+```
+
+---
+
+### 3. 学習済み新モデルの動画推論テスト
+
+```bash
+# 通常推論
+make eval-yolop
+
+# 方法 B（下部クロップ推論）でテスト（元画像サイズに自動逆配置）
+python3 scripts/eval_lane_yolop.py --roi-mode crop_bottom --video mp4/shihou_video_2026_08_24_13_51_47.mp4 --save-video
+```
+
+---
+
+### 4. ROS 2（実機・Launch）での切り替え
+
+`object_road_detector.yaml` または Launch 引数で簡単に切り替えられます：
+
+- **方法 A (上部マスク)**: `roi_mode:=mask_top`
+- **方法 B (下部クロップ)**: `roi_mode:=crop_bottom`
+  *(※推論時は下部のみ拡大認識し、出力時に元画像 1920x1080 に自動で貼り戻すため、3D点群への幾何学変換は1mmも狂いません)*
+
+
 
 

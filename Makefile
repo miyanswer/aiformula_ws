@@ -59,7 +59,11 @@ record:
 
 # Extract training frames from videos and import static images (e.g. make extract TASK=traffic_light)
 extract:
-	python3 scripts/extract_frames.py $(if $(TASK),--task $(TASK),)
+	python3 scripts/extract_frames.py $(if $(TASK),--task $(TASK),) $(if $(filter 1 true,$(BEV)),--bev,)
+
+# Extract training frames with Bird's Eye View (BEV / IPM) transformation (e.g. make extract-bev TASK=t_junction)
+extract-bev:
+	python3 scripts/extract_frames.py $(if $(TASK),--task $(TASK),) --bev --every-sec 0.5 --bev-save-video
 
 # Import static images from raw_images/ (e.g. make import-images TASK=traffic_light)
 import-images:
@@ -105,4 +109,39 @@ detect:
 # Test YOLO detection on video files with playback & controls (e.g. make detect-video TASK=traffic_light)
 detect-video:
 	python3 scripts/detect_video.py $(if $(TASK),--task $(TASK),) $(if $(VIDEO),--video $(VIDEO),) $(if $(SAVE),--save,)
+
+# ==============================================================================
+# YOLOP Lane Segmentation Pipeline Commands (Fine-Tuning)
+# ==============================================================================
+
+# Extract frames from mp4/ videos and auto-generate initial pseudo masks
+prepare-yolop-data:
+	python3 scripts/prepare_yolop_dataset.py $(if $(VIDEO),--video-file $(VIDEO),)
+
+# Process existing masks (e.g. make mask-top or make crop-bottom)
+mask-top:
+	python3 scripts/process_masks.py --mode mask_top --top-cut-ratio 0.45
+
+crop-bottom:
+	python3 scripts/process_masks.py --mode crop_bottom --top-cut-ratio 0.45
+
+clean-noise:
+	python3 scripts/process_masks.py --mode clean_only --clean-noise --min-area 30
+
+# Fine-tune YOLOP lane segmentation model using data/yolop_dataset
+train-yolop:
+	python3 scripts/train_lane_yolop.py
+
+# Fine-tune with Method A (Top Masking)
+train-yolop-mask:
+	python3 scripts/train_lane_yolop.py --mask-top --top-cut-ratio 0.45
+
+# Fine-tune with Method B (Bottom Cropping - 2x Resolution)
+train-yolop-crop:
+	python3 scripts/train_lane_yolop.py --crop-bottom --top-cut-ratio 0.45
+
+# Evaluate trained YOLOP model on video
+eval-yolop:
+	python3 scripts/eval_lane_yolop.py $(if $(VIDEO),--video $(VIDEO),)
+
 
