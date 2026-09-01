@@ -134,14 +134,16 @@ train-yolop:
 
 # Fine-tune with Method A (Top Masking)
 train-yolop-mask:
-	python3 scripts/train_lane_yolop.py --mask-top --top-cut-ratio 0.45
+	python3 scripts/train_lane_yolop.py --mask-top --top-cut-ratio 0.45 --output-name shiho_lane_mask
 
 # Fine-tune with Method B (Bottom Cropping - 2x Resolution)
 train-yolop-crop:
-	python3 scripts/train_lane_yolop.py --crop-bottom --top-cut-ratio 0.45
+	python3 scripts/train_lane_yolop.py --crop-bottom --top-cut-ratio 0.45 --output-name shiho_lane_crop
 
-# Evaluate trained YOLOP model on video
-eval-yolop:
-	python3 scripts/eval_lane_yolop.py $(if $(VIDEO),--video $(VIDEO),)
+WEIGHTS ?=
+
+# Interactive Lane Detection Debugger on Video (e.g. make debug-lane or make debug-lane VIDEO=mp4/xxx.mp4)
+debug-lane eval-yolop:
+	python3 scripts/eval_lane_yolop.py $(if $(WEIGHTS),--weights $(WEIGHTS),) $(if $(VIDEO),--video $(VIDEO),) $(if $(SAVE),--save-video,)
 
 

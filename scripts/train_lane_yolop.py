@@ -386,14 +386,15 @@ def main():
     print(f"\n🎉 Training Finished in {total_time/60:.1f} minutes! Best Val IoU: {best_iou*100:.2f}%")
 
     # 学習曲線のグラフ保存
-    plot_path = WS_DIR / "jpeg/yolop_training_curve.png"
+    plot_path = WS_DIR / f"jpeg/yolop_training_curve_{args.output_name}.png"
+    latest_plot_path = WS_DIR / "jpeg/yolop_training_curve.png"
     plt.figure(figsize=(10, 4))
     plt.subplot(1, 2, 1)
     plt.plot(range(1, args.epochs + 1), history["train_loss"], label="Train Loss")
     plt.plot(range(1, args.epochs + 1), history["val_loss"], label="Val Loss")
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
-    plt.title("Loss Curve")
+    plt.title(f"Loss Curve ({args.output_name})")
     plt.legend()
     plt.grid(True)
 
@@ -401,12 +402,13 @@ def main():
     plt.plot(range(1, args.epochs + 1), [iou * 100 for iou in history["val_iou"]], label="Val IoU (%)", color="green")
     plt.xlabel("Epoch")
     plt.ylabel("IoU (%)")
-    plt.title("Lane Line IoU")
+    plt.title(f"Lane Line IoU (Best: {best_iou*100:.2f}%)")
     plt.legend()
     plt.grid(True)
 
     plt.tight_layout()
     plt.savefig(str(plot_path))
+    plt.savefig(str(latest_plot_path))
     print(f"📊 Training curve plot saved to: {plot_path}")
     print(f"💡 You can now use the new model in object_road_detector by passing:")
     print(f"   weight_path:={weights_dir / f'{args.output_name}.pth'}")

@@ -408,15 +408,31 @@ make train-yolop-crop
 
 ---
 
-### 3. 学習済み新モデルの動画推論テスト
+### 3. 学習済みモデルの動画デバッグ・推論テスト（おすすめ 🎮）
+
+作成したモデルと `mp4/` 内の動画を選択し、画面上でリアルタイム再生・一時停止・コマ送りしながら白線認識精度をデバッグできます。
 
 ```bash
-# 通常推論
-make eval-yolop
+# 対話的にモデルと動画を番号選択してデバッグ起動
+make debug-lane
 
-# 方法 B（下部クロップ推論）でテスト（元画像サイズに自動逆配置）
-python3 scripts/eval_lane_yolop.py --roi-mode crop_bottom --video mp4/shihou_video_2026_08_24_13_51_47.mp4 --save-video
+# 特定のモデルと動画を直接指定して起動
+make debug-lane WEIGHTS=models/shiho_lane_crop_best.pth VIDEO=mp4/shihou_video_2026_08_24_13_51_47.mp4
+
+# 推論結果をMP4動画として jpeg/ フォルダに書き出し保存
+make debug-lane WEIGHTS=models/shiho_lane_crop_best.pth VIDEO=mp4/shihou_video_2026_08_24_13_51_47.mp4 SAVE=1
 ```
+
+#### 🕹️ 動画デバッグ中の操作キー:
+| キー | 機能 |
+| :--- | :--- |
+| **`[SPACE]`** | 一時停止 / 再生 |
+| **`[d]`** / **`[→]`** | 1フレーム進む（コマ送り） |
+| **`[a]`** / **`[←]`** | 1フレーム戻る（コマ戻し） |
+| **`[f]`** / **`[r]`** | 5秒早送り / 5秒巻き戻し |
+| **`[m]`** | 白線オーバーレイ表示 ON / OFF 切り替え（元画像と比較） |
+| **`[s]`** | 現在の検出フレームをスクリーンショット保存（`jpeg/` フォルダへ自動保存） |
+| **`[q]`** / **`[ESC]`** | 終了 |
 
 ---
 
@@ -427,6 +443,7 @@ python3 scripts/eval_lane_yolop.py --roi-mode crop_bottom --video mp4/shihou_vid
 - **方法 A (上部マスク)**: `roi_mode:=mask_top`
 - **方法 B (下部クロップ)**: `roi_mode:=crop_bottom`
   *(※推論時は下部のみ拡大認識し、出力時に元画像 1920x1080 に自動で貼り戻すため、3D点群への幾何学変換は1mmも狂いません)*
+
 
 
 
