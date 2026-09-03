@@ -158,4 +158,13 @@ WEIGHTS ?=
 debug-lane eval-yolop:
 	python3 scripts/eval_lane_yolop.py $(if $(WEIGHTS),--weights $(WEIGHTS),) $(if $(VIDEO),--video $(VIDEO),) $(if $(SAVE),--save-video,)
 
+# Run 2027 BEV Controller & Visual Odometry Video Test inside Docker
+test-control test-bev:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash && ros2 launch ai_formula_oit_2027 video_bev_control_test.launch.py use_device:=cpu"
+
+# Launch RViz2 inside Docker
+rviz:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && rviz2"
+
+
 
