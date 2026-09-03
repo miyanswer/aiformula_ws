@@ -132,13 +132,25 @@ clean-noise:
 train-yolop:
 	python3 scripts/train_lane_yolop.py
 
-# Fine-tune with Method A (Top Masking)
+# Fine-tune with Method A (Top Masking) - Standard 30 epochs
 train-yolop-mask:
 	python3 scripts/train_lane_yolop.py --mask-top --top-cut-ratio 0.45 --output-name shiho_lane_mask
+
+# 🔥 Fine-tune with Method A (Top Masking) - STABILIZED & EXTENDED (Warmup + Batch 8 + 50 epochs)
+train-yolop-mask-v2:
+	python3 scripts/train_lane_yolop.py --mask-top --top-cut-ratio 0.45 --epochs 50 --batch-size 8 --lr 1.5e-4 --warmup-epochs 3 --output-name shiho_lane_mask_v2
 
 # Fine-tune with Method B (Bottom Cropping - 2x Resolution)
 train-yolop-crop:
 	python3 scripts/train_lane_yolop.py --crop-bottom --top-cut-ratio 0.45 --output-name shiho_lane_crop
+
+# Fine-tune from Official Untouched YOLOP (BDD100K) with Bottom Cropping
+train-official-crop:
+	python3 scripts/train_lane_yolop.py --weights models/pretrained/yolop_official.pth --crop-bottom --top-cut-ratio 0.45 --output-name yolop_official_crop
+
+# Fine-tune from Official Untouched YOLOP (BDD100K) with Top Masking
+train-official-mask:
+	python3 scripts/train_lane_yolop.py --weights models/pretrained/yolop_official.pth --mask-top --top-cut-ratio 0.45 --output-name yolop_official_mask
 
 WEIGHTS ?=
 

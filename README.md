@@ -392,8 +392,11 @@ make train-yolop
 # 既存マスク画像の上部45%を一括黒塗り
 make mask-top
 
-# または学習時にオンザフライで上部をマスク
+# 標準 30 エポック学習
 make train-yolop-mask
+
+# 🌟 【最高精度・安定化版 v2】ウォームアップ + バッチ8 + 50エポック (おすすめ 🔥)
+make train-yolop-mask-v2
 ```
 
 #### 🔹 【方法 B: 下半分クロップ学習（路面解像度2倍・高精度）】
@@ -402,9 +405,37 @@ make train-yolop-mask
 # 下部領域データセットを作成
 make crop-bottom
 
-# または学習時にオンザフライで下部領域を切り出して学習
+# shiho-v2 ベースで下部クロップ学習
 make train-yolop-crop
 ```
+
+#### 🔹 【方法 C: 癖のない公式 YOLOP からの新規クロップ学習 🔥】
+過去のコースの癖がない「公式 BDD100K 事前学習重み（`models/pretrained/yolop_official.pth`）」をベースにし、純粋にクロップ路面（解像度2倍）を学習させます。
+```bash
+# 公式 YOLOP 重み × 下半分クロップ学習（おすすめ）
+make train-official-crop
+
+# 公式 YOLOP 重み × 上部マスク学習
+make train-official-mask
+```
+
+> 💡 **データセットの読み込み仕様と仕組みについて:**
+> - `make train-yolop-crop` や `make train-official-crop` は、`data/yolop_dataset/`（元画像 1920x1080）から読み込み、**プログラム実行時にメモリ上で下部55%を自動切り出しして 640x640 に引き伸ばして学習** します（オンザフライ処理）。
+> - そのため、事前に `make crop-bottom` でファイルを作成していなくても、元データが1つあれば全手法がワンコマンドで学習可能です。
+> - もし `make crop-bottom` で生成した `data/yolop_cropped_dataset/` フォルダを明示的に指定して学習したい場合は、以下のように実行できます：
+>   ```bash
+>   python3 scripts/train_lane_yolop.py --data-dir data/yolop_cropped_dataset --weights models/pretrained/yolop_official.pth --output-name yolop_official_crop
+>   ```
+
+#### 📋 各学習コマンドと生成されるモデル一覧:
+| コマンド | ベース重み | 前処理方式・ハイパーパラメータ | 生成されるモデルファイル |
+| :--- | :--- | :--- | :--- |
+| `make train-yolop` | `shiho-v2` | 通常全体学習 (30ep, batch4) | `models/shiho_lane_finetuned_best.pth` |
+| `make train-yolop-mask` | `shiho-v2` | 上部45%黒塗り (30ep, batch4) | `models/shiho_lane_mask_best.pth` (現在の最高精度: 66.1%) |
+| `make train-yolop-mask-v2` | `shiho-v2` | **上部45%黒塗り + Warmup + batch8 + 50ep** | **`models/shiho_lane_mask_v2_best.pth`** (安定化新モデル 🔥) |
+| `make train-yolop-crop` | `shiho-v2` | 下部55%クロップ拡大 (30ep, batch4) | `models/shiho_lane_crop_best.pth` |
+| `make train-official-crop` | **公式 YOLOP** | 下部55%クロップ拡大 (30ep, batch4) | `models/yolop_official_crop_best.pth` |
+| `make train-official-mask` | **公式 YOLOP** | 上部45%黒塗り (30ep, batch4) | `models/yolop_official_mask_best.pth` |
 
 ---
 

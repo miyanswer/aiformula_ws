@@ -81,6 +81,8 @@ def parse_args():
                         help="方法A: 画像の上部を黒塗り (0) にして学習する (上部ノイズを抑制)")
     parser.add_argument("--top-cut-ratio", type=float, default=0.45,
                         help="上部カットの割合 (デフォルト: 0.45 = 上部45%を対象)")
+    parser.add_argument("--warmup-epochs", type=int, default=3,
+                        help="学習初期のウォームアップエポック数 (急激な勾配破綻を防止, デフォルト: 3)")
     parser.add_argument("--device", type=str, default="auto",
                         help="学習デバイス: 'cuda', 'mps', 'cpu', 'auto'")
     parser.add_argument("--num-workers", type=int, default=2,
@@ -304,10 +306,20 @@ def main():
 
     model.to(device)
 
-    # 3. 最適化器 & スケジューラ
+    # 3. 最適化器 & スケジューラ (Warmup + Cosine Annealing)
     trainable_params = [p for p in model.parameters() if p.requires_grad]
     optimizer = optim.AdamW(trainable_params, lr=args.lr, weight_decay=1e-4)
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
+
+    def lr_lambda(epoch_idx):
+        if epoch_idx < args.warmup_epochs:
+            # 線形ウォームアップ (1/warmup -> 1.0)
+            return float(epoch_idx + 1) / float(max(1, args.warmup_epochs))
+        else:
+            # コサイン減衰 (1.0 -> 0.01)
+            progress = float(epoch_idx - args.warmup_epochs) / float(max(1, args.epochs - args.warmup_epochs))
+            return 0.5 * (1.0 + math.cos(math.pi * progress)) * 0.99 + 0.01
+
+    scheduler = optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lr_lambda)
     criterion = CombinedLaneLoss(ce_weight=1.0, dice_weight=1.5)
 
     # 保存ディレクトリ
