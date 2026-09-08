@@ -1,0 +1,25 @@
+/**:
+  traffic_light_detector:
+    ros__parameters:
+      # 1. YOLO Model Configuration
+      model_path: "models/traffic_light.pt"
+      device: "cpu"                  # 'cpu', 'mps' (Apple Silicon), '0' (CUDA)
+      imgsz: 640
+      conf_threshold: 0.35
+      iou_threshold: 0.45
+
+      # 2. Topic Configuration
+      image_topic: "/aiformula_sensing/zed_node/left_image/undistorted"
+      debug_image_topic: "/aiformula_perception/traffic_light/debug_image"
+
+      base_topic: "/aiformula_perception/traffic_light"
+      publish_debug_image: true
+
+      # 3. Geometric Depth Estimation (Pinhole Vertical Height Model)
+      # Formula: Z = (focal_length_y * real_height) / bbox_height_px
+      real_height: 0.32              # 信号機の実寸法 (1辺32cmの正方形規格) [m]
+      focal_length_y: 2256.0         # カメラ垂直焦点距離 [pixel] (20m地点キャリブレーション値)
+      min_bbox_height: 4.0           # 最小有効BBox高さ [pixel]
+      max_valid_distance: 50.0       # 最大有効距離 [m]
+      smoothing_alpha: 0.70          # 指数平滑化フィルタ係数 (0.0~1.0)
+

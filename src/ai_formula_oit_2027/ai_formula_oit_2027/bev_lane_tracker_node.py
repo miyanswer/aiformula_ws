@@ -93,6 +93,8 @@ class BEVLaneTrackerNode(Node):
         self.declare_parameter('mask_image_topic', '/aiformula_perception/object_road_detector/mask_image')
         self.declare_parameter('cmd_vel_topic', '/aiformula_control/handle_controller/cmd_vel')
         self.declare_parameter('status_topic', '/aiformula_control/lane_tracker/status')
+
+
         self.declare_parameter('marker_topic', '/aiformula_visualization/lane_target_marker')
         self.declare_parameter('path_topic', '/aiformula_visualization/target_trajectory')
 

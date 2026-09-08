@@ -3,9 +3,11 @@
     # 1. Perception Topic Inputs
     mask_image_topic: "/aiformula_perception/object_road_detector/mask_image"
 
-    # 2. Control Topic Outputs (ai_formula_oit_2026 standard)
+    # 2. Control Topic Outputs (ai_formula_oit_2026 topic_list.yaml standard)
     cmd_vel_topic: "/aiformula_control/handle_controller/cmd_vel"
     status_topic: "/aiformula_control/lane_tracker/status"
+
+
 
     # 3. Visualization Outputs (ai_formula_oit_2026 standard)
     marker_topic: "/aiformula_visualization/lane_target_marker"

@@ -19,14 +19,16 @@ setup(
     zip_safe=True,
     maintainer='rosuser',
     maintainer_email='rosuser@todo.todo',
-    description='Vision-Only BEV Navigation, Localization and Pure Pursuit Control for AI Formula OIT 2027',
+    description='Vision-Only BEV Navigation and Pure Pursuit Control for AI Formula OIT 2027',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'bev_lane_tracker = ai_formula_oit_2027.bev_lane_tracker_node:main',
-            'bev_visual_odometry = ai_formula_oit_2027.bev_visual_odometry_node:main',
             'pure_pursuit_controller = ai_formula_oit_2027.pure_pursuit_controller:main',
+            'traffic_light_detector = ai_formula_oit_2027.traffic_light_detector_node:main',
         ],
     },
 )
+
+
