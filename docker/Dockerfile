@@ -35,21 +35,32 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1-mesa-glx \
     libasio-dev \
     ros-humble-can-msgs \
+    ros-humble-cv-bridge \
     ros-humble-diagnostic-updater \
     ros-humble-geographic-msgs \
+    ros-humble-image-transport \
+    ros-humble-image-transport-plugins \
     ros-humble-joint-state-publisher \
     ros-humble-joint-state-publisher-gui \
+    ros-humble-joy \
     ros-humble-nmea-msgs \
     ros-humble-robot-localization \
+    ros-humble-ros2-socketcan \
+    ros-humble-rqt-runtime-monitor \
+    ros-humble-teleop-twist-joy \
     ros-humble-teleop-twist-keyboard \
+    ros-humble-vision-msgs \
     ros-humble-xacro \
     && rm -rf /var/lib/apt/lists/*
 
-# Install AI / Perception dependencies
+# Install AI / Perception and Hardware Communication dependencies
 RUN pip3 install --no-cache-dir \
     "setuptools<70.0.0" \
     "numpy<2.0.0" \
     torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    python-can \
+    pyserial \
+    ultralytics \
     yacs \
     scipy \
     tqdm \

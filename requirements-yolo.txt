@@ -8,3 +8,8 @@ matplotlib>=3.7.0
 pillow>=10.0.0
 anylabeling
 PyQt5
+python-can>=4.3.0
+pyserial>=3.5
+tensorboardX>=2.6
+seaborn>=0.13.0
+yacs>=0.1.8

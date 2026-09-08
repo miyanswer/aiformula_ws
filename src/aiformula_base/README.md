@@ -20,27 +20,44 @@ AI Formula 実車機体を動かすための **提供ベースフレームワー
 | **`launchers/`**| `sample_launchers` | 機体一括起動 Launch (`hardware_bringup.launch.py`) |
 | **`common/`** | `aiformula_interfaces` | 共通メッセージ型定義 |
 | | `common_python`, `common_cpp` | 共通Launchユーティリティ |
-| **`bash/`** | `can_bringup.sh`, `init_sensors.sh` | CANインターフェース (500kbps) 起動・センサ権限設定スクリプト |
+| **`bash/`** | `1_bringup_hardware.sh` | [実機専用] 機体・センサー類・モーター駆動・安全機構の一括起動 |
+| | `2_test_pc_standalone.sh` | [PC単体検証] 実機なしでPC単体でアルゴリズム/新機能の検証・開発を行う |
+| | `3_bringup_all_nodes.sh` | [実機専用] 機体ハードウェア＋自律走行（2027システム）の全ノード一括起動 |
+| | `teleop_keyboard.sh` | キーボードによる手動操縦（Twist Mux連携） |
 
 ---
 
-## 🚀 実機での起動方法
+## 💻 開発・実行ワークフロー
 
-### 1. CAN と センサ権限の初期化
+### A. 実機なしでPC単体で検証・開発する場合（推奨）
+実機が手元になくても、カメラ動画（MP4）を擬似入力として、レーン検出・BEV追従制御・信号機認識・可視化（RViz2）をPC単体でテストできます。
 ```bash
-bash src/aiformula_base/bash/step1.sh
-# または
-sudo ip link set can0 up type can bitrate 500000
+cd /path/to/aiformula_ws
+bash src/aiformula_base/bash/2_test_pc_standalone.sh
+
+# 任意の動画やCPU実行を指定する場合:
+bash src/aiformula_base/bash/2_test_pc_standalone.sh /path/to/video.mp4 cpu
 ```
 
-### 2. 機体ハードウェア基盤の一括起動
-```bash
-ros2 launch sample_launchers hardware_bringup.launch.py
-```
-*(※カメラ、IMU、CAN通信、モーター制御、TF、安全機構が一括で立ち上がり、`/aiformula_control/handle_controller/cmd_vel` の入力を待機します)*
+---
 
-### 3. 頭脳（2027 制御・認識ノード）の起動
+### B. 実車で機体ハードウェアのみを起動する場合
+実車上でCANやカメラ、IMUなどのハードウェア基盤を起動し、外部からの速度指令待機状態にします。
 ```bash
-ros2 launch ai_formula_oit_2027 controller.launch.py
-ros2 launch ai_formula_oit_2027 traffic_light_detector.launch.py
+bash src/aiformula_base/bash/1_bringup_hardware.sh
+```
+
+---
+
+### C. 実車で全システム（機体＋自律走行）を一括起動する場合
+実車上でハードウェア初期化から、認識・制御・信号機検知までの全ノードを1コマンドで起動します。
+```bash
+bash src/aiformula_base/bash/3_bringup_all_nodes.sh
+```
+
+---
+
+### D. キーボードによる手動操縦（動作確認用）
+```bash
+bash src/aiformula_base/bash/teleop_keyboard.sh
 ```
