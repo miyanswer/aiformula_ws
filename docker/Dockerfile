@@ -57,7 +57,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --no-cache-dir \
     "setuptools<70.0.0" \
     "numpy<2.0.0" \
-    torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu \
+    && pip3 install --no-cache-dir \
     python-can \
     pyserial \
     ultralytics \

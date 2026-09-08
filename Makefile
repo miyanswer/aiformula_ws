@@ -43,6 +43,22 @@ logs:
 clean:
 	rm -rf build install log
 
+# Build ROS 2 workspace packages inside Docker container
+build-ws:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && colcon build --symlink-install"
+
+# [PC Standalone Test] Run full pipeline test with video input & RViz inside Docker
+test-pc:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash && ros2 launch sample_launchers pc_standalone_test.launch.py use_device:=cpu rviz:=true"
+
+# [Real Vehicle Full Bringup] Run all hardware + autonomous driving nodes
+bringup-all:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash && bash src/aiformula_base/bash/3_bringup_all_nodes.sh"
+
+# [Real Vehicle Hardware Bringup] Run hardware nodes only
+bringup-hw:
+	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash && bash src/aiformula_base/bash/1_bringup_hardware.sh"
+
 # ==============================================================================
 # YOLO Multi-Task Pipeline Commands (e.g. make train TASK=traffic_light)
 # ==============================================================================
