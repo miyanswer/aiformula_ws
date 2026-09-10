@@ -59,6 +59,10 @@ bringup-all:
 bringup-hw:
 	docker compose exec aiformula_ws bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash && bash src/aiformula_base/bash/1_bringup_hardware.sh"
 
+# Stop & kill all lingering ROS 2 and RViz nodes inside container
+stop-nodes kill-nodes:
+	docker compose exec aiformula_ws bash -c "pkill -9 -f 'ros2|rviz2|video_publisher|yolop_lane_detector|bev_pure_pursuit_node|robot_state_publisher|joint_state_publisher' || true"
+
 # ==============================================================================
 # YOLO Multi-Task Pipeline Commands (e.g. make train TASK=traffic_light)
 # ==============================================================================

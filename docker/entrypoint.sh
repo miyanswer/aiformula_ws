@@ -11,24 +11,37 @@ if [ -f "/aiformula_ws/install/setup.bash" ]; then
     source "/aiformula_ws/install/setup.bash"
 fi
 
-# Start virtual display & noVNC services if DISPLAY=:1 and not already running
+# Set virtual display
 export DISPLAY="${DISPLAY:-:1}"
 
-if [ ! -e "/tmp/.X11-unix/X1" ] && [ ! -e "/tmp/.X1-lock" ]; then
-    # Start Xvfb (Virtual Framebuffer)
-    Xvfb :1 -screen 0 1920x1080x24+32 > /tmp/xvfb.log 2>&1 &
-    sleep 1
+# Ensure X11 / GUI services are running
+start_gui_services() {
+    # If Xvfb is not running, cleanup stale locks and start it
+    if ! pgrep -x "Xvfb" > /dev/null; then
+        rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 2>/dev/null || true
+        Xvfb :1 -screen 0 1920x1080x24+32 > /tmp/xvfb.log 2>&1 &
+        sleep 1
+    fi
 
-    # Start Fluxbox Window Manager
-    fluxbox > /tmp/fluxbox.log 2>&1 &
-    sleep 0.5
+    # Start Window Manager if not running
+    if ! pgrep -x "fluxbox" > /dev/null; then
+        fluxbox > /tmp/fluxbox.log 2>&1 &
+        sleep 0.5
+    fi
 
-    # Start x11vnc server
-    x11vnc -display :1 -forever -shared -nopw -rfbport 5900 -quiet > /tmp/x11vnc.log 2>&1 &
-    sleep 0.5
+    # Start x11vnc if not running
+    if ! pgrep -x "x11vnc" > /dev/null; then
+        x11vnc -display :1 -forever -shared -nopw -rfbport 5900 -quiet > /tmp/x11vnc.log 2>&1 &
+        sleep 0.5
+    fi
 
-    # Start websockify (noVNC web server on port 8080)
-    websockify --web /usr/share/novnc 8080 localhost:5900 > /tmp/novnc.log 2>&1 &
-fi
+    # Start websockify (noVNC web server on port 8080) if not running
+    if ! pgrep -f "websockify.*8080" > /dev/null; then
+        websockify --web /usr/share/novnc 8080 localhost:5900 > /tmp/novnc.log 2>&1 &
+        sleep 0.5
+    fi
+}
+
+start_gui_services
 
 exec "$@"
