@@ -15,7 +15,7 @@ def _cleanup_old_processes():
     """Kill lingering zombie processes from previous launches to prevent accumulation."""
     try:
         subprocess.run(
-            ["pkill", "-9", "-f", "video_publisher|yolop_lane_detector|bev_pure_pursuit_node|rviz2|robot_state_publisher|joint_state_publisher"],
+            ["pkill", "-9", "-f", "video_publisher|yolop_lane_detector|bev_pure_pursuit_node|traffic_light_distance_node|rviz2|robot_state_publisher|joint_state_publisher"],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
             check=False,
@@ -36,6 +36,7 @@ def generate_launch_description():
     pkg_sample_vehicle = get_package_share_directory("sample_vehicle")
 
     default_params_file = osp.join(pkg_oit_navigation, "config", "navigation_params.yaml")
+    default_traffic_light_params_file = osp.join(pkg_oit_navigation, "config", "traffic_light_params.yaml")
     default_rviz_file = osp.join(pkg_oit_navigation, "config", "oit_navigation.rviz")
 
     launch_args = [
@@ -78,6 +79,21 @@ def generate_launch_description():
             "rviz",
             default_value="true",
             description="Launch RViz2 for visualization",
+        ),
+        DeclareLaunchArgument(
+            "traffic_light",
+            default_value="true",
+            description="Launch the traffic light distance estimator node",
+        ),
+        DeclareLaunchArgument(
+            "traffic_light_model_path",
+            default_value="/aiformula_ws/models/traffic_light.pt",
+            description="Path to the YOLO traffic light model (.pt)",
+        ),
+        DeclareLaunchArgument(
+            "traffic_light_params_file",
+            default_value=default_traffic_light_params_file,
+            description="Path to traffic light distance params YAML",
         ),
     ]
 
@@ -132,7 +148,26 @@ def generate_launch_description():
         parameters=[LaunchConfiguration("params_file")],
     )
 
-    # 5. RViz2 可視化 (closing RViz shuts down all pipeline nodes cleanly)
+    # 5. 信号機検出 & 画面占有率による距離逆算ノード (信号は 1 辺 32cm の正方形)
+    traffic_light_distance_node = Node(
+        package="oit_navigation",
+        executable="traffic_light_distance_node",
+        name="traffic_light_distance_node",
+        output="screen",
+        condition=IfCondition(LaunchConfiguration("traffic_light")),
+        parameters=[
+            LaunchConfiguration("traffic_light_params_file"),
+            {
+                "image_topic": LaunchConfiguration("input_image_topic"),
+                "model_path": LaunchConfiguration("traffic_light_model_path"),
+                "device": LaunchConfiguration("use_device"),
+                "real_height_m": 0.32,
+                "publish_annotated_image": True,
+            },
+        ],
+    )
+
+    # 6. RViz2 可視化 (closing RViz shuts down all pipeline nodes cleanly)
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -150,6 +185,7 @@ def generate_launch_description():
             video_publisher_node,
             yolop_node,
             bev_controller_node,
+            traffic_light_distance_node,
             rviz_node,
         ]
     )
