@@ -34,18 +34,22 @@ import torchvision.transforms as transforms
 from tqdm import tqdm
 
 WS_DIR = Path(__file__).resolve().parent.parent
-YOLOP_DIR = WS_DIR / "src/ai_formula_oit_2026/perception/yolop"
-if str(YOLOP_DIR) not in sys.path:
-    sys.path.insert(0, str(YOLOP_DIR))
+YOLOP_CANDIDATES = [
+    WS_DIR / "src/aiformula_base/oit_navigation/oit_navigation/yolop",
+    WS_DIR / "src/ai_formula_oit_2026/perception/yolop",
+]
+for ydir in YOLOP_CANDIDATES:
+    if ydir.exists() and str(ydir) not in sys.path:
+        sys.path.insert(0, str(ydir))
 
 try:
-    from yolop.lib.config import cfg
-    from yolop.lib.models import get_net
-    from yolop.lib.utils import letterbox_for_img
-except ImportError:
     from lib.config import cfg
     from lib.models import get_net
     from lib.utils import letterbox_for_img
+except ImportError:
+    from yolop.lib.config import cfg
+    from yolop.lib.models import get_net
+    from yolop.lib.utils import letterbox_for_img
 
 
 def parse_args():
@@ -178,7 +182,7 @@ def main():
     roi_mode = args.roi_mode
     if roi_mode == "auto":
         w_name = Path(weights_path).name.lower()
-        if "crop" in w_name:
+        if "crop" in w_name or "honda" in w_name or "finetuned" in w_name:
             roi_mode = "crop_bottom"
         elif "mask" in w_name:
             roi_mode = "mask_top"
@@ -237,6 +241,7 @@ def main():
     print("  [a] / [←] : 1フレーム戻る (コマ戻し)")
     print("  [f] / [r] : 5秒早送り / 巻き戻し")
     print("  [m]       : 白線オーバーレイ表示切り替え")
+    print("  [c]       : ROIモード切り替え (crop_bottom / mask_top / none)")
     print("  [s]       : 現在フレームをスクリーンショット保存 (jpeg/)")
     print("  [q] / ESC : 終了\n")
 
@@ -353,6 +358,11 @@ def main():
                 cap.set(cv2.CAP_PROP_POS_FRAMES, current_frame)
             elif key == ord('m'):  # Toggle mask
                 show_mask = not show_mask
+            elif key == ord('c'):  # Toggle ROI mode
+                roi_modes = ["crop_bottom", "mask_top", "none"]
+                current_idx = roi_modes.index(roi_mode) if roi_mode in roi_modes else 0
+                roi_mode = roi_modes[(current_idx + 1) % len(roi_modes)]
+                print(f"\n🔄 Switched ROI Mode to: {roi_mode}")
             elif key == ord('s'):  # Screenshot
                 screenshot_path = output_dir / f"screenshot_{Path(video_path).stem}_f{current_frame:06d}.jpg"
                 cv2.imwrite(str(screenshot_path), vis)

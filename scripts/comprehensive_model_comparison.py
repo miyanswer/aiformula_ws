@@ -17,13 +17,22 @@ import torch
 import torchvision.transforms as transforms
 
 WS_DIR = Path(__file__).resolve().parent.parent
-YOLOP_DIR = WS_DIR / "src/ai_formula_oit_2026/perception/yolop"
-if str(YOLOP_DIR) not in sys.path:
-    sys.path.insert(0, str(YOLOP_DIR))
+YOLOP_CANDIDATES = [
+    WS_DIR / "src/aiformula_base/oit_navigation/oit_navigation/yolop",
+    WS_DIR / "src/ai_formula_oit_2026/perception/yolop",
+]
+for ydir in YOLOP_CANDIDATES:
+    if ydir.exists() and str(ydir) not in sys.path:
+        sys.path.insert(0, str(ydir))
 
-from lib.config import cfg
-from lib.models import get_net
-from lib.utils import letterbox_for_img
+try:
+    from lib.config import cfg
+    from lib.models import get_net
+    from lib.utils import letterbox_for_img
+except ImportError:
+    from yolop.lib.config import cfg
+    from yolop.lib.models import get_net
+    from yolop.lib.utils import letterbox_for_img
 
 
 def load_model(weights_path: str, device: torch.device):
@@ -149,10 +158,18 @@ def main():
         {
             "id": "official_crop",
             "title": "(6) Official YOLOP + Crop-Bottom [Best IoU: 59.65%]",
-            "sub_info": "Origin: Official YOLOP | Mode: Bottom 55% 2x Crop",
+            "sub_info": "Origin: Official YOLOP | Mode: Bottom 55% 2x Crop (560 samples)",
             "path": str(WS_DIR / "models/yolop_official_crop_best.pth"),
             "roi_mode": "crop_bottom",
             "color": (255, 0, 255) # Magenta
+        },
+        {
+            "id": "honda_yolop_crop",
+            "title": "(7) Combined Official Crop (Honda + Shihou)",
+            "sub_info": "Origin: Official YOLOP | Mode: Bottom 55% Crop (1,537 samples)",
+            "path": str(WS_DIR / "models/honda_yolop_crop_best.pth"),
+            "roi_mode": "crop_bottom",
+            "color": (0, 255, 255) # Yellow
         },
     ]
 
@@ -163,7 +180,7 @@ def main():
             m = load_model(cfg_item["path"], device)
             loaded_models.append((cfg_item, m))
         else:
-            print(f"Warning: {cfg_item['path']} not found!")
+            print(f"Notice: {cfg_item['path']} not found (will be skipped if not trained yet).")
 
     transform = transforms.Compose([
         transforms.ToTensor(),
@@ -176,7 +193,7 @@ def main():
         print(f"Could not open {video_path}")
         return
 
-    output_dir = WS_DIR / "jpeg/comparison_6models"
+    output_dir = WS_DIR / "jpeg/comparison_models"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # 代表的フレーム
@@ -203,22 +220,29 @@ def main():
             panel_small = cv2.resize(panel, (640, 380))
             panels.append(panel_small)
 
-        # 2行 x 3列 グリッド作成
-        if len(panels) == 6:
-            row1 = np.hstack(panels[0:3]) # shiho-v2, shiho_mask, shiho_crop
-            row2 = np.hstack(panels[3:6]) # official_base, official_mask, official_crop
-            grid = np.vstack([row1, row2])
-            
+        # グリッド作成 (3列ずつ行に分割)
+        cols = 3
+        rows = []
+        for i in range(0, len(panels), cols):
+            row_panels = panels[i:i+cols]
+            # 行の幅を揃えるためのパディング
+            while len(row_panels) < cols:
+                blank = np.zeros_like(panels[0])
+                row_panels.append(blank)
+            rows.append(np.hstack(row_panels))
+        
+        if rows:
+            grid = np.vstack(rows)
             save_path = output_dir / f"compare_grid_frame_{f_idx:05d}.jpg"
             cv2.imwrite(str(save_path), grid)
             print(f"  -> Saved grid comparison: {save_path}")
 
             # rootの jpeg/ にも最新の代表比較画像を保存
-            root_save_path = WS_DIR / f"jpeg/comparison_6models_frame_{f_idx}.jpg"
+            root_save_path = WS_DIR / f"jpeg/comparison_models_frame_{f_idx}.jpg"
             cv2.imwrite(str(root_save_path), grid)
 
     cap.release()
-    print("\n🎉 All 6 models comparison completed! Check images in jpeg/comparison_6models/")
+    print("\n🎉 Comparison completed! Check images in jpeg/comparison_models/")
 
 
 if __name__ == "__main__":

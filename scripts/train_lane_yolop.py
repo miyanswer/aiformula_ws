@@ -42,24 +42,30 @@ from tqdm import tqdm
 
 # YOLOP インポートパス
 WS_DIR = Path(__file__).resolve().parent.parent
-YOLOP_DIR = WS_DIR / "src/ai_formula_oit_2026/perception/yolop"
-if str(YOLOP_DIR) not in sys.path:
-    sys.path.insert(0, str(YOLOP_DIR))
+YOLOP_CANDIDATES = [
+    WS_DIR / "src/aiformula_base/oit_navigation/oit_navigation/yolop",
+    WS_DIR / "src/ai_formula_oit_2026/perception/yolop",
+]
+for ydir in YOLOP_CANDIDATES:
+    if ydir.exists() and str(ydir) not in sys.path:
+        sys.path.insert(0, str(ydir))
 
 try:
-    from yolop.lib.config import cfg
-    from yolop.lib.models import get_net
-    from yolop.lib.utils import letterbox_for_img
-except ImportError:
     from lib.config import cfg
     from lib.models import get_net
     from lib.utils import letterbox_for_img
+except ImportError:
+    from yolop.lib.config import cfg
+    from yolop.lib.models import get_net
+    from yolop.lib.utils import letterbox_for_img
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="YOLOP 白線ファインチューニング")
-    parser.add_argument("--data-dir", type=str, default=str(WS_DIR / "data/yolop_dataset"),
-                        help="データセットディレクトリ (デフォルト: data/yolop_dataset)")
+    parser = argparse.ArgumentParser(description="YOLOP 白線・走行領域ファインチューニング")
+    parser.add_argument("--data-dir", type=str, default="",
+                        help="データセットディレクトリ (単一指定用, デフォルト: data/yolop_dataset)")
+    parser.add_argument("--data-dirs", nargs="+", default=[],
+                        help="複数のデータセットディレクトリを指定 (例: --data-dirs data/yolop_cropped_dataset data/honda_cropped_dataset)")
     parser.add_argument("--weights", type=str,
                         default=str(WS_DIR / "src/ai_formula_oit_2026/perception/object_road_detector/weights/shiho-v2-20251118.pth"),
                         help="ベースとなる学習済み重みファイル")
@@ -83,6 +89,8 @@ def parse_args():
                         help="上部カットの割合 (デフォルト: 0.45 = 上部45%を対象)")
     parser.add_argument("--warmup-epochs", type=int, default=3,
                         help="学習初期のウォームアップエポック数 (急激な勾配破綻を防止, デフォルト: 3)")
+    parser.add_argument("--train-drivable", action="store_true",
+                        help="走行可能領域 (da) も同時に学習する")
     parser.add_argument("--device", type=str, default="auto",
                         help="学習デバイス: 'cuda', 'mps', 'cpu', 'auto'")
     parser.add_argument("--num-workers", type=int, default=2,
@@ -104,15 +112,37 @@ def detect_device(device_arg: str):
 # Dataset 定義
 # =========================================================================
 class LaneDataset(Dataset):
-    def __init__(self, img_dir: Path, mask_dir: Path, img_size: int = 640, is_train: bool = True,
-                 crop_bottom: bool = False, mask_top: bool = False, top_cut_ratio: float = 0.45):
-        self.img_paths = sorted(glob.glob(str(img_dir / "*.jpg")) + glob.glob(str(img_dir / "*.png")))
-        self.mask_dir = mask_dir
+    def __init__(self, data_dirs, split: str = "train", img_size: int = 640, is_train: bool = True,
+                 crop_bottom: bool = False, mask_top: bool = False, top_cut_ratio: float = 0.45,
+                 train_drivable: bool = False):
+        if isinstance(data_dirs, (str, Path)):
+            data_dirs = [Path(data_dirs)]
+        else:
+            data_dirs = [Path(d) for d in data_dirs]
+
+        self.samples = []
+        for d in data_dirs:
+            img_dir = d / "images" / split
+            lane_dir = d / "lane_masks" / split
+            da_dir = d / "drivable_masks" / split
+
+            img_files = sorted(glob.glob(str(img_dir / "*.jpg")) + glob.glob(str(img_dir / "*.png")))
+            for img_p in img_files:
+                stem = Path(img_p).stem
+                lane_p = lane_dir / f"{stem}.png"
+                da_p = da_dir / f"{stem}.png"
+                self.samples.append({
+                    "img": img_p,
+                    "lane": str(lane_p) if lane_p.exists() else "",
+                    "da": str(da_p) if da_p.exists() else ""
+                })
+
         self.img_size = img_size
         self.is_train = is_train
         self.crop_bottom = crop_bottom
         self.mask_top = mask_top
         self.top_cut_ratio = top_cut_ratio
+        self.train_drivable = train_drivable
 
         self.normalize = transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
@@ -120,12 +150,13 @@ class LaneDataset(Dataset):
         )
 
     def __len__(self):
-        return len(self.img_paths)
+        return len(self.samples)
 
     def __getitem__(self, idx):
-        img_path = self.img_paths[idx]
-        mask_name = Path(img_path).stem + ".png"
-        mask_path = self.mask_dir / mask_name
+        sample = self.samples[idx]
+        img_path = sample["img"]
+        lane_path = sample["lane"]
+        da_path = sample["da"]
 
         # 画像とマスクの読み込み
         img = cv2.imread(img_path)
@@ -133,41 +164,59 @@ class LaneDataset(Dataset):
             raise ValueError(f"Could not read image: {img_path}")
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        if mask_path.exists():
-            mask = cv2.imread(str(mask_path), cv2.IMREAD_GRAYSCALE)
-            mask = (mask > 127).astype(np.uint8)  # 0 or 1
+        if lane_path and os.path.exists(lane_path):
+            lane_mask = cv2.imread(lane_path, cv2.IMREAD_GRAYSCALE)
+            lane_mask = (lane_mask > 127).astype(np.uint8)  # 0 or 1
         else:
-            mask = np.zeros(img.shape[:2], dtype=np.uint8)
+            lane_mask = np.zeros(img.shape[:2], dtype=np.uint8)
+
+        if self.train_drivable and da_path and os.path.exists(da_path):
+            da_mask = cv2.imread(da_path, cv2.IMREAD_GRAYSCALE)
+            da_mask = (da_mask > 127).astype(np.uint8)
+        else:
+            da_mask = np.zeros(img.shape[:2], dtype=np.uint8)
 
         # ROI 処理 (方法A: 上部黒塗り / 方法B: 下部クロップ)
+        # ※ すでに画像がクロップ済み (アスペクト比が横長・高さが約600px以下) の場合は再クロップをスキップ
         h, w = img.shape[:2]
-        cut_y = int(h * self.top_cut_ratio)
+        already_cropped = h < (w * 0.45)  # 1920x1080(比率0.56) vs 1920x594(比率0.31)
 
-        if self.crop_bottom:
-            # 方法B: 下半分だけを切り出す (解像度2倍)
-            img = img[cut_y:, :]
-            mask = mask[cut_y:, :]
-        elif self.mask_top:
-            # 方法A: 上部を黒塗りにする
-            mask[:cut_y, :] = 0
+        if not already_cropped:
+            cut_y = int(h * self.top_cut_ratio)
+            if self.crop_bottom:
+                # 方法B: 下半分だけを切り出す (解像度2倍)
+                img = img[cut_y:, :]
+                lane_mask = lane_mask[cut_y:, :]
+                da_mask = da_mask[cut_y:, :]
+            elif self.mask_top:
+                # 方法A: 上部を黒塗りにする
+                lane_mask[:cut_y, :] = 0
+                da_mask[:cut_y, :] = 0
 
         # リサイズ (Letterbox)
         h, w = img.shape[:2]
         img_resized, ratio, pad = letterbox_for_img(img, new_shape=self.img_size, auto=False)
         
         # マスクも同様に Letterbox 適用
-        mask_resized = cv2.resize(mask, (int(w * ratio[0]), int(h * ratio[1])), interpolation=cv2.INTER_NEAREST)
-        pad_mask = np.zeros((self.img_size, self.img_size), dtype=np.uint8)
-        top, bottom = int(pad[1]), int(self.img_size - pad[1] - mask_resized.shape[0])
-        left, right = int(pad[0]), int(self.img_size - pad[0] - mask_resized.shape[1])
-        pad_mask[top:top + mask_resized.shape[0], left:left + mask_resized.shape[1]] = mask_resized
+        lane_resized = cv2.resize(lane_mask, (int(w * ratio[0]), int(h * ratio[1])), interpolation=cv2.INTER_NEAREST)
+        pad_lane_mask = np.zeros((self.img_size, self.img_size), dtype=np.uint8)
+        top, bottom = int(pad[1]), int(self.img_size - pad[1] - lane_resized.shape[0])
+        left, right = int(pad[0]), int(self.img_size - pad[0] - lane_resized.shape[1])
+        pad_lane_mask[top:top + lane_resized.shape[0], left:left + lane_resized.shape[1]] = lane_resized
+
+        if self.train_drivable:
+            da_resized = cv2.resize(da_mask, (int(w * ratio[0]), int(h * ratio[1])), interpolation=cv2.INTER_NEAREST)
+            pad_da_mask = np.zeros((self.img_size, self.img_size), dtype=np.uint8)
+            pad_da_mask[top:top + da_resized.shape[0], left:left + da_resized.shape[1]] = da_resized
 
         # データ拡張 (Train のみ)
         if self.is_train:
             # ランダム水平フリップ
             if np.random.rand() > 0.5:
                 img_resized = np.ascontiguousarray(np.fliplr(img_resized))
-                pad_mask = np.ascontiguousarray(np.fliplr(pad_mask))
+                pad_lane_mask = np.ascontiguousarray(np.fliplr(pad_lane_mask))
+                if self.train_drivable:
+                    pad_da_mask = np.ascontiguousarray(np.fliplr(pad_da_mask))
 
             # ランダムな明度・コントラスト変動
             if np.random.rand() > 0.3:
@@ -179,9 +228,13 @@ class LaneDataset(Dataset):
         img_tensor = torch.from_numpy(img_resized).permute(2, 0, 1).float() / 255.0
         img_tensor = self.normalize(img_tensor)
 
-        mask_tensor = torch.from_numpy(pad_mask).long()
+        lane_mask_tensor = torch.from_numpy(pad_lane_mask).long()
 
-        return img_tensor, mask_tensor
+        if self.train_drivable:
+            da_mask_tensor = torch.from_numpy(pad_da_mask).long()
+            return img_tensor, lane_mask_tensor, da_mask_tensor
+
+        return img_tensor, lane_mask_tensor
 
 
 # =========================================================================
@@ -246,34 +299,40 @@ def calculate_iou(pred: torch.Tensor, target: torch.Tensor) -> float:
 # =========================================================================
 def main():
     args = parse_args()
-    data_dir = Path(args.data_dir)
-    train_img_dir = data_dir / "images/train"
-    train_mask_dir = data_dir / "lane_masks/train"
-    val_img_dir = data_dir / "images/val"
-    val_mask_dir = data_dir / "lane_masks/val"
 
-    if not train_img_dir.exists() or len(list(train_img_dir.glob("*.jpg"))) == 0:
-        print(f"Error: Dataset not found in {data_dir}")
-        print("Please run `python3 scripts/prepare_yolop_dataset.py` first to generate dataset from mp4 files.")
+    # データセットディレクトリの収集
+    target_data_dirs = []
+    if args.data_dirs:
+        target_data_dirs.extend(args.data_dirs)
+    elif args.data_dir:
+        target_data_dirs.append(args.data_dir)
+    else:
+        target_data_dirs.append(str(WS_DIR / "data/yolop_dataset"))
+
+    resolved_dirs = [Path(d) for d in target_data_dirs if Path(d).exists()]
+    if not resolved_dirs:
+        print(f"Error: None of the specified dataset directories exist: {target_data_dirs}")
         sys.exit(1)
 
     device = detect_device(args.device)
     print("=" * 60)
     print(f"🚀 YOLOP Lane Segmentation Fine-Tuning")
     print(f"Device: {device}")
-    print(f"Dataset: {data_dir}")
+    print(f"Datasets: {[str(d) for d in resolved_dirs]}")
     print(f"Base weights: {args.weights}")
     print(f"Epochs: {args.epochs}, Batch Size: {args.batch_size}, LR: {args.lr}")
     print("=" * 60)
 
     # 1. データセットと DataLoader
     train_dataset = LaneDataset(
-        train_img_dir, train_mask_dir, img_size=args.img_size, is_train=True,
-        crop_bottom=args.crop_bottom, mask_top=args.mask_top, top_cut_ratio=args.top_cut_ratio
+        resolved_dirs, split="train", img_size=args.img_size, is_train=True,
+        crop_bottom=args.crop_bottom, mask_top=args.mask_top, top_cut_ratio=args.top_cut_ratio,
+        train_drivable=args.train_drivable
     )
     val_dataset = LaneDataset(
-        val_img_dir, val_mask_dir, img_size=args.img_size, is_train=False,
-        crop_bottom=args.crop_bottom, mask_top=args.mask_top, top_cut_ratio=args.top_cut_ratio
+        resolved_dirs, split="val", img_size=args.img_size, is_train=False,
+        crop_bottom=args.crop_bottom, mask_top=args.mask_top, top_cut_ratio=args.top_cut_ratio,
+        train_drivable=args.train_drivable
     )
 
     train_loader = DataLoader(
@@ -331,6 +390,8 @@ def main():
     best_iou = 0.0
     history = {"train_loss": [], "val_loss": [], "val_iou": []}
 
+    da_criterion = CombinedLaneLoss(ce_weight=1.0, dice_weight=1.0) if args.train_drivable else None
+
     print("\nStarting Training...")
     start_time = time.time()
 
@@ -339,14 +400,25 @@ def main():
         train_loss = 0.0
 
         pbar = tqdm(train_loader, desc=f"Epoch {epoch:02d}/{args.epochs:02d} [Train]")
-        for imgs, masks in pbar:
-            imgs = imgs.to(device)
-            masks = masks.to(device)
+        for batch_data in pbar:
+            if args.train_drivable:
+                imgs, lane_masks, da_masks = batch_data
+                imgs = imgs.to(device)
+                lane_masks = lane_masks.to(device)
+                da_masks = da_masks.to(device)
+            else:
+                imgs, lane_masks = batch_data
+                imgs = imgs.to(device)
+                lane_masks = lane_masks.to(device)
 
             optimizer.zero_grad()
-            _, _, ll_seg_out = model(imgs)  # Lane Line Head 出力: (B, 2, H, W)
+            _, da_seg_out, ll_seg_out = model(imgs)  # da: (B, 2, H, W), ll: (B, 2, H, W)
 
-            loss = criterion(ll_seg_out, masks)
+            loss = criterion(ll_seg_out, lane_masks)
+            if args.train_drivable:
+                da_loss = da_criterion(da_seg_out, da_masks)
+                loss = loss + 0.5 * da_loss
+
             loss.backward()
             optimizer.step()
 
@@ -362,15 +434,26 @@ def main():
         total_iou = 0.0
 
         with torch.no_grad():
-            for imgs, masks in tqdm(val_loader, desc=f"Epoch {epoch:02d}/{args.epochs:02d} [Val]", leave=False):
-                imgs = imgs.to(device)
-                masks = masks.to(device)
+            for batch_data in tqdm(val_loader, desc=f"Epoch {epoch:02d}/{args.epochs:02d} [Val]", leave=False):
+                if args.train_drivable:
+                    imgs, lane_masks, da_masks = batch_data
+                    imgs = imgs.to(device)
+                    lane_masks = lane_masks.to(device)
+                    da_masks = da_masks.to(device)
+                else:
+                    imgs, lane_masks = batch_data
+                    imgs = imgs.to(device)
+                    lane_masks = lane_masks.to(device)
 
-                _, _, ll_seg_out = model(imgs)
-                loss = criterion(ll_seg_out, masks)
+                _, da_seg_out, ll_seg_out = model(imgs)
+                loss = criterion(ll_seg_out, lane_masks)
+                if args.train_drivable:
+                    da_loss = da_criterion(da_seg_out, da_masks)
+                    loss = loss + 0.5 * da_loss
+
                 val_loss += loss.item() * imgs.size(0)
 
-                iou = calculate_iou(ll_seg_out, masks)
+                iou = calculate_iou(ll_seg_out, lane_masks)
                 total_iou += iou * imgs.size(0)
 
         val_loss /= len(val_dataset)

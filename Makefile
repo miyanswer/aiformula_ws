@@ -164,19 +164,25 @@ train-yolop-mask-v2:
 train-yolop-crop:
 	python3 scripts/train_lane_yolop.py --crop-bottom --top-cut-ratio 0.45 --output-name shiho_lane_crop
 
-# Fine-tune from Official Untouched YOLOP (BDD100K) with Bottom Cropping
-train-official-crop:
-	python3 scripts/train_lane_yolop.py --weights models/pretrained/yolop_official.pth --crop-bottom --top-cut-ratio 0.45 --output-name yolop_official_crop
+# Crop honda_data_set (Lane & Drivable only, ignoring det_annotations)
+crop-honda:
+	python3 scripts/crop_honda_dataset.py
 
-# Fine-tune from Official Untouched YOLOP (BDD100K) with Top Masking
-train-official-mask:
-	python3 scripts/train_lane_yolop.py --weights models/pretrained/yolop_official.pth --mask-top --top-cut-ratio 0.45 --output-name yolop_official_mask
-
-WEIGHTS ?=
+# 🔥 Train combined dataset (honda_cropped_dataset + yolop_cropped_dataset) from Official YOLOP
+train-combined-crop:
+	python3 scripts/train_lane_yolop.py \
+		--data-dirs data/yolop_cropped_dataset data/honda_cropped_dataset \
+		--weights models/pretrained/yolop_official.pth \
+		--epochs 50 \
+		--batch-size 8 \
+		--lr 1.5e-4 \
+		--warmup-epochs 3 \
+		--train-drivable \
+		--output-name honda_yolop_crop
 
 # Interactive Lane Detection Debugger on Video (e.g. make debug-lane or make debug-lane VIDEO=mp4/xxx.mp4)
 debug-lane eval-yolop:
-	python3 scripts/eval_lane_yolop.py $(if $(WEIGHTS),--weights $(WEIGHTS),) $(if $(VIDEO),--video $(VIDEO),) $(if $(SAVE),--save-video,)
+	python3 scripts/eval_lane_yolop.py $(if $(WEIGHTS),--weights $(WEIGHTS),) $(if $(VIDEO),--video $(VIDEO),) $(if $(ROI),--roi-mode $(ROI),) $(if $(SAVE),--save-video,)
 
 # Run 2027 BEV Controller Video Test inside Docker
 test-control test-bev:

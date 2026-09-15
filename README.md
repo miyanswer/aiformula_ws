@@ -419,23 +419,26 @@ make train-official-crop
 make train-official-mask
 ```
 
-> 💡 **データセットの読み込み仕様と仕組みについて:**
-> - `make train-yolop-crop` や `make train-official-crop` は、`data/yolop_dataset/`（元画像 1920x1080）から読み込み、**プログラム実行時にメモリ上で下部55%を自動切り出しして 640x640 に引き伸ばして学習** します（オンザフライ処理）。
-> - そのため、事前に `make crop-bottom` でファイルを作成していなくても、元データが1つあれば全手法がワンコマンドで学習可能です。
-> - もし `make crop-bottom` で生成した `data/yolop_cropped_dataset/` フォルダを明示的に指定して学習したい場合は、以下のように実行できます：
->   ```bash
->   python3 scripts/train_lane_yolop.py --data-dir data/yolop_cropped_dataset --weights models/pretrained/yolop_official.pth --output-name yolop_official_crop
->   ```
+#### 🌟 【方法 D: Honda Dataset 統合クロップ学習（データ数3倍・1,537枚 × 解像度2倍）🔥🚀】
+新しく追加した `data/honda_data_set`（物体検出 det は除外し、白線・走行可能領域のみをクロップ）と `data/yolop_cropped_dataset`（試走動画）を合算し、公式 YOLOP 重みから 50 エポック学習します。
+```bash
+# 1. honda_data_set を上部45%クロップ (honda_cropped_dataset 作成)
+make crop-honda
+
+# 2. 統合データセットで公式 YOLOP から本番学習 (50ep, batch8, Warmup)
+make train-combined-crop
+```
 
 #### 📋 各学習コマンドと生成されるモデル一覧:
 | コマンド | ベース重み | 前処理方式・ハイパーパラメータ | 生成されるモデルファイル |
 | :--- | :--- | :--- | :--- |
 | `make train-yolop` | `shiho-v2` | 通常全体学習 (30ep, batch4) | `models/shiho_lane_finetuned_best.pth` |
-| `make train-yolop-mask` | `shiho-v2` | 上部45%黒塗り (30ep, batch4) | `models/shiho_lane_mask_best.pth` (現在の最高精度: 66.1%) |
-| `make train-yolop-mask-v2` | `shiho-v2` | **上部45%黒塗り + Warmup + batch8 + 50ep** | **`models/shiho_lane_mask_v2_best.pth`** (安定化新モデル 🔥) |
+| `make train-yolop-mask` | `shiho-v2` | 上部45%黒塗り (30ep, batch4) | `models/shiho_lane_mask_best.pth` |
+| `make train-yolop-mask-v2` | `shiho-v2` | **上部45%黒塗り + Warmup + batch8 + 50ep** | `models/shiho_lane_mask_v2_best.pth` (従来の最高精度: 66.1%) |
 | `make train-yolop-crop` | `shiho-v2` | 下部55%クロップ拡大 (30ep, batch4) | `models/shiho_lane_crop_best.pth` |
 | `make train-official-crop` | **公式 YOLOP** | 下部55%クロップ拡大 (30ep, batch4) | `models/yolop_official_crop_best.pth` |
 | `make train-official-mask` | **公式 YOLOP** | 上部45%黒塗り (30ep, batch4) | `models/yolop_official_mask_best.pth` |
+| **`make train-combined-crop`** | **公式 YOLOP** | **Honda + 試走統合 (1,537枚) × クロップ拡大 (50ep, batch8)** | **`models/honda_yolop_crop_best.pth`** (新最高精度モデル 🔥) |
 
 ---
 
