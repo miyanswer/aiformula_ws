@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'video_publisher = oit_navigation.video_publisher:main',
             'yolop_lane_detector = oit_navigation.yolop_lane_detector:main',
+            'ufld_lane_detector = oit_navigation.ufld_lane_detector:main',
             'bev_pure_pursuit_node = oit_navigation.bev_pure_pursuit_node:main',
             'bev_lane_tracker = oit_navigation.bev_pure_pursuit_node:main',
             'pure_pursuit_controller = oit_navigation.bev_pure_pursuit_node:main',

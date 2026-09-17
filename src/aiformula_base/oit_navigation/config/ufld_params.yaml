@@ -1,0 +1,25 @@
+/**:
+  ros__parameters:
+    # 1. Perception Topic Inputs & Outputs
+    input_image_topic: "/aiformula_sensing/zed_node/left_image/undistorted/compressed"
+    annotated_image_topic: "/aiformula_visualization/ufld_lane_detector/annotated_image"
+
+    # 2. UFLD Model Parameters
+    weight_path: "/aiformula_ws/models/pretrained/ufld_tusimple_r18.pth"
+    use_device: "cpu"            # "cpu" or "0" (CUDA GPU)
+    frame_skip: 2                # Infer 1 in every N frames to keep CPU load low
+
+    # 3. Camera & BEV Physical Projection Geometry (same calibration as YOLOP/bev_pure_pursuit)
+    camera_height: 0.56          # Ground clearance [m]
+    dist_min: 1.15               # Forward minimum distance [m]
+    dist_max: 10.0               # Forward maximum distance [m]
+    lateral_max: 5.0             # Lateral half-width (+-5.0m) [m]
+
+    # 4. Line-Type Classification Thresholds
+    solid_ratio_threshold: 0.85   # >= this row-anchor continuity ratio -> solid (実線)
+    dashed_min_ratio: 0.15        # below this, too sparse to trust -> unknown (不明)
+    double_line_min_dist_m: 0.08  # lateral gap band (paint-to-paint) that indicates 二重線
+    double_line_max_dist_m: 0.55
+
+    # 5. Terminal Output
+    log_interval_sec: 1.0        # Minimum interval between "現在の車線" terminal logs [sec]
