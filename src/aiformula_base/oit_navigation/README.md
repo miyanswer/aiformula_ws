@@ -220,7 +220,7 @@ ros2 launch oit_navigation video_test.launch.py video_path:=/aiformula_ws/mp4/<�
 
 ### 検証用GUI (verification_gui)
 
-上記4パターンと動画ファイルを選んで `ros2 launch` を起動/停止できるブラウザ製ツールです。
+モデルファイル (`models/*.pt`, `*.pth`) と動画ファイル (`mp4/*.mp4`) を選んで `ros2 launch` を起動/停止できるブラウザ製ツールです。
 コンテナ内のXvfb/noVNC (RViz用 `:8080`) にはCJKフォントが無く、Tkinter等で描くと日本語が文字化けするため、
 標準ライブラリのみの小さなHTTPサーバー (`:8090`) を起動し、**ホスト側の通常ブラウザ**で開く方式にしています。
 noVNCの画面とは別の、独立したブラウザタブ/ウィンドウとして開きます。
@@ -239,7 +239,9 @@ ros2 run oit_navigation verification_gui
 ```
 ターミナルに表示される `http://localhost:8090` を **ホストPCの**ブラウザで開きます。
 
-- 「検証パイプライン」で①〜④を選択
+- 「検証モデル」で `cone.pt` や `traffic_light.pt`、白線モデルなどを選択（モデル種別を自動判別）
 - 「動画フォルダ」(既定 `/aiformula_ws/mp4`) から `.mp4` 一覧を自動読み込み、「検証動画」で選択
-- デバイス (`cpu` / `mps` / `0`)・FPS・ループ再生を指定して「起動」
-- ログ画面にリアルタイム表示 (1秒間隔でポーリング)、「停止」で `ros2 launch` プロセスにSIGINTを送って全ノードを終了
+- デバイス (`cpu` / `mps` / `0`)・FPS・ループ再生を指定して「検証開始」
+- オプションで「統合走行モード（白線+PurePursuit経路生成）」も同時実行可能
+- ログ画面にリアルタイム表示、「停止」で `ros2 launch` プロセスにSIGINTを送って全ノードを終了
+

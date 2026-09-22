@@ -64,20 +64,22 @@ from oit_navigation.ufld.constant import (  # noqa: E402
 _IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 _IMAGENET_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
-# lane slots, matching ufld_lane_detector.py's ego-pair convention
-_EGO_LEFT_SLOT = 1
-_EGO_RIGHT_SLOT = 2
+# lane slots, matching TuSimple / UFLD convention (4 lanes)
+_FAR_LEFT_SLOT = 0   # 外側左レーン (LL)
+_EGO_LEFT_SLOT = 1   # 自車左レーン (L)
+_EGO_RIGHT_SLOT = 2  # 自車右レーン (R)
+_FAR_RIGHT_SLOT = 3  # 外側右レーン (RR)
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="UFLD 自車レーン検出 ファインチューニング")
+    parser = argparse.ArgumentParser(description="UFLD 4レーン検出 (自車+外側) ファインチューニング")
     parser.add_argument("--data-dirs", nargs="+",
                         default=[str(WS_DIR / "data/yolop_dataset"), str(WS_DIR / "data/honda_data_set")],
                         help="データセットディレクトリ (デフォルト: data/yolop_dataset data/honda_data_set)")
     parser.add_argument("--weights", type=str,
                         default=str(WS_DIR / "models/pretrained/ufld_tusimple_r18.pth"),
                         help="ベースとなる学習済み重みファイル")
-    parser.add_argument("--output-name", type=str, default="ufld_honda_finetuned",
+    parser.add_argument("--output-name", type=str, default="ufld_honda_4lanes_finetuned",
                         help="保存するモデルの名前プレフィックス")
     parser.add_argument("--epochs", type=int, default=20,
                         help="学習エポック数 (デフォルト: 20)")
@@ -85,6 +87,16 @@ def parse_args():
                         help="バッチサイズ (デフォルト: 8)")
     parser.add_argument("--lr", type=float, default=1e-4,
                         help="学習率 (デフォルト: 1e-4)")
+    parser.add_argument("--backbone-lr-ratio", type=float, default=0.1,
+                        help="バックボーンの学習率比率 (デフォルト: 0.1 = 1e-5)")
+    parser.add_argument("--weight-decay", type=float, default=0.01,
+                        help="AdamW Weight Decay (デフォルト: 0.01)")
+    parser.add_argument("--label-smoothing", type=float, default=0.1,
+                        help="CrossEntropyLoss Label Smoothing (デフォルト: 0.1)")
+    parser.add_argument("--dropout", type=float, default=0.3,
+                        help="分類Headの中間Dropout率 (デフォルト: 0.3)")
+    parser.add_argument("--patience", type=int, default=4,
+                        help="Early Stopping patience (デフォルト: 4)")
     parser.add_argument("--freeze-backbone", action="store_true",
                         help="バックボーンを固定し、分類Headのみ学習する (データ数が少ない場合に推奨)")
     parser.add_argument("--warmup-epochs", type=int, default=2,
@@ -128,10 +140,12 @@ def _row_runs(mask_row: np.ndarray) -> List[float]:
 class UFLDRowAnchorDataset(Dataset):
     """
     Converts binary lane masks (YOLOP-style) into UFLD row-anchor classification
-    labels on the fly: for each canonical row anchor, the two mask-pixel runs
-    nearest to image-center (left / right) become the ego-lane ground truth for
-    lane slots 1 and 2. Slots 0 and 3 (far outer lanes) are not supervised by
-    this data and are always labeled "no lane".
+    labels on the fly: for each canonical row anchor, lane runs are mapped across
+    all 4 lane slots:
+      - slot 0: far left lane (outer left)
+      - slot 1: ego left lane (nearest left of mid_x)
+      - slot 2: ego right lane (nearest right of mid_x)
+      - slot 3: far right lane (outer right)
     """
 
     def __init__(self, data_dirs: List[Path], split: str, is_train: bool):
@@ -168,15 +182,20 @@ class UFLDRowAnchorDataset(Dataset):
             if not centers:
                 continue
 
-            left_candidates = [c for c in centers if c < mid_x]
-            right_candidates = [c for c in centers if c >= mid_x]
+            left_candidates = sorted([c for c in centers if c < mid_x])
+            right_candidates = sorted([c for c in centers if c >= mid_x])
 
-            if left_candidates:
-                left_x = max(left_candidates)
-                labels[k, _EGO_LEFT_SLOT] = encode_lane_label(left_x, img_w, self.griding_num)
-            if right_candidates:
-                right_x = min(right_candidates)
-                labels[k, _EGO_RIGHT_SLOT] = encode_lane_label(right_x, img_w, self.griding_num)
+            # 自車左 (slot 1) と 外側左 (slot 0)
+            if len(left_candidates) >= 1:
+                labels[k, _EGO_LEFT_SLOT] = encode_lane_label(left_candidates[-1], img_w, self.griding_num)
+            if len(left_candidates) >= 2:
+                labels[k, _FAR_LEFT_SLOT] = encode_lane_label(left_candidates[-2], img_w, self.griding_num)
+
+            # 自車右 (slot 2) と 外側右 (slot 3)
+            if len(right_candidates) >= 1:
+                labels[k, _EGO_RIGHT_SLOT] = encode_lane_label(right_candidates[0], img_w, self.griding_num)
+            if len(right_candidates) >= 2:
+                labels[k, _FAR_RIGHT_SLOT] = encode_lane_label(right_candidates[1], img_w, self.griding_num)
 
         return torch.from_numpy(labels)
 
@@ -195,10 +214,33 @@ class UFLDRowAnchorDataset(Dataset):
 
         labels = self._build_labels(mask)
 
-        if self.is_train and np.random.rand() > 0.3:
-            alpha = np.random.uniform(0.7, 1.3)
-            beta = np.random.uniform(-30, 30)
-            image = np.clip(alpha * image.astype(np.float32) + beta, 0, 255).astype(np.uint8)
+        if self.is_train:
+            # 1. 明度・コントラストのジッター
+            if np.random.rand() > 0.3:
+                alpha = np.random.uniform(0.7, 1.3)
+                beta = np.random.uniform(-30, 30)
+                image = np.clip(alpha * image.astype(np.float32) + beta, 0, 255).astype(np.uint8)
+
+            # 2. HSVカラージッター (色相・彩度の揺らぎ)
+            if np.random.rand() > 0.5:
+                hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV).astype(np.float32)
+                hsv[:, :, 0] = (hsv[:, :, 0] + np.random.uniform(-10, 10)) % 180
+                hsv[:, :, 1] = np.clip(hsv[:, :, 1] * np.random.uniform(0.8, 1.2), 0, 255)
+                image = cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2BGR)
+
+            # 3. 微小ぼかし (Gaussian Blur)
+            if np.random.rand() > 0.7:
+                k = np.random.choice([3, 5])
+                image = cv2.GaussianBlur(image, (k, k), 0)
+
+            # 4. ランダム消去 (Cutout / Erasing): 遮蔽耐性の向上
+            if np.random.rand() > 0.6:
+                h, w, _ = image.shape
+                er_h = np.random.randint(int(h * 0.05), int(h * 0.15))
+                er_w = np.random.randint(int(w * 0.05), int(w * 0.20))
+                y0 = np.random.randint(0, max(1, h - er_h))
+                x0 = np.random.randint(0, max(1, w - er_w))
+                image[y0:y0+er_h, x0:x0+er_w] = np.random.randint(0, 100, (er_h, er_w, 3), dtype=np.uint8)
 
         resized = cv2.resize(image, (self.net_w, self.net_h))
         rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB).astype(np.float32) / 255.0
@@ -208,14 +250,30 @@ class UFLDRowAnchorDataset(Dataset):
         return img_tensor, labels
 
 
-def ego_lane_accuracy(pred: torch.Tensor, target: torch.Tensor, tolerance: int = 1) -> float:
-    """Fraction of ego-lane (slots 1, 2) row-anchor cells the model gets right,
-    within `tolerance` griding bins for real detections, exact match for "no lane"."""
-    pred_cls = torch.argmax(pred, dim=1)  # (B, num_row_anchors, num_lanes)
-    ego_pred = pred_cls[:, :, [_EGO_LEFT_SLOT, _EGO_RIGHT_SLOT]]
-    ego_target = target[:, :, [_EGO_LEFT_SLOT, _EGO_RIGHT_SLOT]]
+class ClsHeadWithDropout(nn.Module):
+    """Wraps ParsingNet.cls to add Dropout while preserving exact state_dict keys
+    ('cls.0.weight', 'cls.0.bias', 'cls.2.weight', 'cls.2.bias')."""
 
-    correct = (ego_pred == ego_target) | ((ego_pred - ego_target).abs() <= tolerance)
+    def __init__(self, orig_cls: nn.Sequential, p: float = 0.3):
+        super().__init__()
+        self.add_module("0", orig_cls[0])
+        self.add_module("1", orig_cls[1])
+        self.dropout = nn.Dropout(p=p)
+        self.add_module("2", orig_cls[2])
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self._modules["0"](x)
+        x = self._modules["1"](x)
+        x = self.dropout(x)
+        x = self._modules["2"](x)
+        return x
+
+
+def lane_accuracy(pred: torch.Tensor, target: torch.Tensor, tolerance: int = 1) -> float:
+    """Fraction of all 4 lane row-anchor cells the model gets right,
+    within `tolerance` griding bins for real detections, exact match for 'no lane'."""
+    pred_cls = torch.argmax(pred, dim=1)  # (B, num_row_anchors, num_lanes)
+    correct = (pred_cls == target) | ((pred_cls - target).abs() <= tolerance)
     return correct.float().mean().item()
 
 
@@ -228,7 +286,7 @@ def main():
 
     device = detect_device(args.device)
     print("=" * 60)
-    print("UFLD Ego-Lane Fine-Tuning")
+    print("UFLD 4-Lane Fine-Tuning")
     print(f"Device: {device}")
     print(f"Datasets: {[str(d) for d in data_dirs]}")
     print(f"Base weights: {args.weights}")
@@ -257,16 +315,28 @@ def main():
     else:
         print(f"Warning: {args.weights} not found, training from scratch!")
 
+    if args.dropout > 0:
+        print(f"Adding Dropout (p={args.dropout}) to classification head...")
+        model.cls = ClsHeadWithDropout(model.cls, p=args.dropout)
+
     if args.freeze_backbone:
         print("Freezing backbone layers (model.*), training pool/cls heads only...")
         for name, param in model.named_parameters():
             if name.startswith("model."):
                 param.requires_grad = False
+        trainable_params = [p for p in model.parameters() if p.requires_grad]
+        optimizer = optim.AdamW(trainable_params, lr=args.lr, weight_decay=args.weight_decay)
+    else:
+        backbone_params = [p for n, p in model.named_parameters() if p.requires_grad and n.startswith("model.")]
+        head_params = [p for n, p in model.named_parameters() if p.requires_grad and not n.startswith("model.")]
+        backbone_lr = args.lr * args.backbone_lr_ratio
+        print(f"Differential LR: Backbone LR = {backbone_lr:.2e}, Head LR = {args.lr:.2e}, Weight Decay = {args.weight_decay}")
+        optimizer = optim.AdamW([
+            {"params": backbone_params, "lr": backbone_lr},
+            {"params": head_params, "lr": args.lr},
+        ], weight_decay=args.weight_decay)
 
     model.to(device)
-
-    trainable_params = [p for p in model.parameters() if p.requires_grad]
-    optimizer = optim.AdamW(trainable_params, lr=args.lr, weight_decay=1e-4)
 
     def lr_lambda(epoch_idx):
         if epoch_idx < args.warmup_epochs:
@@ -275,15 +345,18 @@ def main():
         return 0.5 * (1.0 + math.cos(math.pi * progress)) * 0.99 + 0.01
 
     scheduler = optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lr_lambda)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(label_smoothing=args.label_smoothing)
 
     save_dir = WS_DIR / "models"
     save_dir.mkdir(parents=True, exist_ok=True)
 
+    best_val_loss = float("inf")
     best_acc = 0.0
+    best_epoch = 0
+    no_improve_epochs = 0
     history = {"train_loss": [], "val_loss": [], "val_acc": []}
 
-    print("\nStarting Training...")
+    print("\nStarting Training with Regularization & Early Stopping...")
     start_time = time.time()
 
     for epoch in range(1, args.epochs + 1):
@@ -317,7 +390,7 @@ def main():
                 out = model(imgs)
                 loss = criterion(out, labels)
                 val_loss += loss.item() * imgs.size(0)
-                total_acc += ego_lane_accuracy(out, labels) * imgs.size(0)
+                total_acc += lane_accuracy(out, labels) * imgs.size(0)
 
         val_loss /= max(1, len(val_dataset))
         val_acc = total_acc / max(1, len(val_dataset))
@@ -327,22 +400,33 @@ def main():
         history["val_acc"].append(val_acc)
 
         print(f"Epoch {epoch:02d}/{args.epochs:02d} | Train Loss: {train_loss:.4f} | "
-              f"Val Loss: {val_loss:.4f} | Val Ego-Lane Acc: {val_acc*100:.2f}%")
+              f"Val Loss: {val_loss:.4f} | Val Lane Acc: {val_acc*100:.2f}%")
 
-        if val_acc > best_acc:
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
             best_acc = val_acc
+            best_epoch = epoch
+            no_improve_epochs = 0
             best_save_path = save_dir / f"{args.output_name}_best.pth"
-            torch.save({"model": model.state_dict(), "epoch": epoch, "best_acc": best_acc}, str(best_save_path))
-            print(f"  New best model saved! Ego-Lane Acc: {best_acc*100:.2f}% -> {best_save_path}")
+            torch.save({"model": model.state_dict(), "epoch": epoch, "best_loss": best_val_loss, "best_acc": best_acc}, str(best_save_path))
+            print(f"  ★ New best model saved! Val Loss: {best_val_loss:.4f} (Acc: {best_acc*100:.2f}%) -> {best_save_path}")
+        else:
+            no_improve_epochs += 1
+            print(f"  No improvement in Val Loss for {no_improve_epochs}/{args.patience} epochs (Best: {best_val_loss:.4f} at epoch {best_epoch:02d}).")
+            if no_improve_epochs >= args.patience:
+                print(f"\n[Early Stopping] Triggered at epoch {epoch:02d}. Stopping training to prevent overfitting.")
+                break
 
     total_time = time.time() - start_time
-    print(f"\nTraining finished in {total_time/60:.1f} minutes! Best Val Ego-Lane Acc: {best_acc*100:.2f}%")
+    print(f"\nTraining finished in {total_time/60:.1f} minutes! Best Val Loss: {best_val_loss:.4f} (Acc: {best_acc*100:.2f}% at epoch {best_epoch:02d})")
 
+    epochs_run = range(1, len(history["train_loss"]) + 1)
     plot_path = WS_DIR / f"jpeg/ufld_training_curve_{args.output_name}.png"
     plt.figure(figsize=(10, 4))
     plt.subplot(1, 2, 1)
-    plt.plot(range(1, args.epochs + 1), history["train_loss"], label="Train Loss")
-    plt.plot(range(1, args.epochs + 1), history["val_loss"], label="Val Loss")
+    plt.plot(epochs_run, history["train_loss"], label="Train Loss")
+    plt.plot(epochs_run, history["val_loss"], label="Val Loss")
+    plt.axvline(x=best_epoch, color="red", linestyle="--", alpha=0.6, label=f"Best Model (Epoch {best_epoch})")
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.title(f"Loss Curve ({args.output_name})")
@@ -350,10 +434,11 @@ def main():
     plt.grid(True)
 
     plt.subplot(1, 2, 2)
-    plt.plot(range(1, args.epochs + 1), [a * 100 for a in history["val_acc"]], label="Val Ego-Lane Acc (%)", color="green")
+    plt.plot(epochs_run, [a * 100 for a in history["val_acc"]], label="Val Lane Acc (%)", color="green")
+    plt.axvline(x=best_epoch, color="red", linestyle="--", alpha=0.6, label=f"Best Model (Epoch {best_epoch})")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy (%)")
-    plt.title(f"Ego-Lane Accuracy (Best: {best_acc*100:.2f}%)")
+    plt.title(f"Lane Accuracy (Best Val Loss Acc: {best_acc*100:.2f}%)")
     plt.legend()
     plt.grid(True)
 

@@ -47,11 +47,15 @@ from oit_navigation.ufld.constant import (
 _IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 _IMAGENET_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
-_LANE_COLORS = {
-    "left": (255, 180, 0),   # cyan (BGR)
-    "right": (0, 220, 255),  # yellow (BGR)
-    "other": (140, 140, 140),
+# 4レーンスロットのメタ定義 (TuSimple / UFLD 規格)
+# Slot 0: 外側左 (LL), Slot 1: 自車左 (L), Slot 2: 自車右 (R), Slot 3: 外側右 (RR)
+_SLOT_META = {
+    0: {"code": "LL", "name": "外側左", "color": (255, 50, 200)},   # Magenta (BGR)
+    1: {"code": "L",  "name": "自車左", "color": (255, 180, 0)},   # Cyan (BGR)
+    2: {"code": "R",  "name": "自車右", "color": (0, 220, 255)},   # Yellow (BGR)
+    3: {"code": "RR", "name": "外側右", "color": (50, 220, 50)},    # Green (BGR)
 }
+_DEFAULT_COLOR = (140, 140, 140)
 
 
 class UFLDLaneDetectorNode(Node):
@@ -210,12 +214,12 @@ class UFLDLaneDetectorNode(Node):
             cur_shape = self._latest_img_shape
 
         annotated = image.copy()
-        left_result = right_result = None
+        results_by_slot = {}
         bev_canvas = self._blank_bev_canvas()
         if cur_dets and cur_shape is not None and cur_shape == image.shape[:2]:
-            left_result, right_result, bev_canvas = self._render_and_classify(annotated, cur_dets, image.shape[1])
+            results_by_slot, bev_canvas = self._render_and_classify(annotated, cur_dets, image.shape[1])
 
-        self._maybe_log(left_result, right_result)
+        self._maybe_log(results_by_slot)
 
         annotated_msg = cv2_to_imgmsg(annotated, encoding='bgr8', frame_id=msg.header.frame_id, stamp=msg.header.stamp)
         self.annotated_image_pub.publish(annotated_msg)
@@ -273,54 +277,43 @@ class UFLDLaneDetectorNode(Node):
 
         if self._frame_count % 30 == 0:
             infer_ms = (time.perf_counter() - t_start) * 1000.0
-            self.get_logger().info(f"[UFLD Inference] Latency: {infer_ms:.1f} ms | lanes_detected={len(dets)}")
-
-    def _select_ego_pair(self, dets: List[LaneDetection], img_w: int):
-        mid_x = img_w / 2.0
-        left_det, right_det = None, None
-        left_best, right_best = -1.0, float('inf')
-
-        for d in dets:
-            bottom_x = float(d.points_px[-1, 0])
-            if bottom_x < mid_x and bottom_x > left_best:
-                left_best = bottom_x
-                left_det = d
-            elif bottom_x >= mid_x and bottom_x < right_best:
-                right_best = bottom_x
-                right_det = d
-
-        return left_det, right_det
+            slots_str = ",".join(str(d.lane_index) for d in dets)
+            self.get_logger().info(f"[UFLD Inference] Latency: {infer_ms:.1f} ms | lanes_detected={len(dets)} (slots: [{slots_str}])")
 
     def _render_and_classify(self, annotated: np.ndarray, dets: List[LaneDetection], img_w: int):
         self.bev_transformer.ensure_source_size(img_w, annotated.shape[0])
         bev_pts_by_lane = {id(d): self.bev_transformer.image_pts_to_bev_metric(d.points_px) for d in dets}
 
-        left_det, right_det = self._select_ego_pair(dets, img_w)
         bev_canvas = self._blank_bev_canvas()
+        results_by_slot = {}
 
+        # 1. 全検出レーンの点列描画 (4レーンそれぞれ固有カラー)
         for d in dets:
-            role = "left" if d is left_det else ("right" if d is right_det else "other")
-            color = _LANE_COLORS[role]
+            slot_info = _SLOT_META.get(d.lane_index, {"code": f"L{d.lane_index}", "color": _DEFAULT_COLOR})
+            color = slot_info["color"]
             for (x, y) in d.points_px:
-                cv2.circle(annotated, (int(x), int(y)), 4, color, -1)
+                cv2.circle(annotated, (int(x), int(y)), 5, color, -1)
             self._draw_bev_points(bev_canvas, bev_pts_by_lane[id(d)], color)
 
-        left_result = self._classify_side(left_det, dets, bev_pts_by_lane)
-        right_result = self._classify_side(right_det, dets, bev_pts_by_lane)
+        # 2. 全4スロットの線種判定 & ラベル描画 (LL, L, R, RR)
+        for d in dets:
+            result = self._classify_side(d, dets, bev_pts_by_lane)
+            results_by_slot[d.lane_index] = result
 
-        for det, result, label in ((left_det, left_result, "L"), (right_det, right_result, "R")):
-            if det is None or result is None:
-                continue
-            px, py = det.points_px[-1]
-            color = _LANE_COLORS["left" if label == "L" else "right"]
-            ascii_text = f"{label}:{LINE_TYPE_ASCII.get(result.line_type, '?')}"
-            cv2.putText(
-                annotated, ascii_text, (int(px) - 20, int(py) + 25),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2,
-            )
-            self._label_bev_lane(bev_canvas, bev_pts_by_lane[id(det)], ascii_text, color)
+            slot_info = _SLOT_META.get(d.lane_index, {"code": f"L{d.lane_index}", "color": _DEFAULT_COLOR})
+            code = slot_info["code"]
+            color = slot_info["color"]
 
-        return left_result, right_result, bev_canvas
+            if result is not None and len(d.points_px) > 0:
+                px, py = d.points_px[-1]  # 手前側の点
+                ascii_text = f"{code}:{LINE_TYPE_ASCII.get(result.line_type, '?')}"
+                cv2.putText(
+                    annotated, ascii_text, (int(px) - 25, int(py) + 25),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.65, color, 2,
+                )
+                self._label_bev_lane(bev_canvas, bev_pts_by_lane[id(d)], ascii_text, color)
+
+        return results_by_slot, bev_canvas
 
     def _blank_bev_canvas(self) -> np.ndarray:
         bev = self.bev_transformer
@@ -367,20 +360,26 @@ class UFLDLaneDetectorNode(Node):
             double_line_max_dist_m=self.double_line_max_dist_m,
         )
 
-    def _maybe_log(self, left_result, right_result):
+    def _maybe_log(self, results_by_slot):
         now = time.time()
         if now - self._last_log_time < self.log_interval_sec:
             return
         self._last_log_time = now
 
-        def fmt(result):
-            if result is None:
-                return "検出なし"
-            if result.line_type == LINE_TYPE_UNKNOWN:
-                return f"不明(連続率{result.continuity_ratio:.2f})"
-            return f"{result.line_type}(連続率{result.continuity_ratio:.2f}, 途切れ{result.gap_runs}回)"
+        def fmt(res):
+            if res is None:
+                return "--"
+            if res.line_type == LINE_TYPE_UNKNOWN:
+                return f"不明({res.continuity_ratio:.2f})"
+            return f"{res.line_type}({res.continuity_ratio:.2f})"
 
-        self.get_logger().info(f"[UFLD] 左={fmt(left_result)} | 右={fmt(right_result)}")
+        slot_strs = []
+        for s in (0, 1, 2, 3):
+            code = _SLOT_META[s]["code"]
+            slot_strs.append(f"{code}:{fmt(results_by_slot.get(s))}")
+
+        detected_count = len(results_by_slot)
+        self.get_logger().info(f"[UFLD 4-Lane ({detected_count}/4)] " + " | ".join(slot_strs))
 
     def destroy_node(self):
         self._running = False
