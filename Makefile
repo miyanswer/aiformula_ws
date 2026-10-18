@@ -35,6 +35,21 @@ root-bash:
 gui open-gui:
 	open http://localhost:8080
 
+# Open Foxglove Studio with MCAP data
+foxglove:
+	open -a Foxglove rosbag/mcap/20261012_151105_6lane.mcap
+
+# Convert ROS 2 bag + Video into Foxglove MCAP format
+# Usage:
+#   make convert-mcap                       # Convert all sessions
+#   make convert-mcap SESSION=rosbag/20261012_134520/6lane
+convert-mcap:
+	@if [ -z "$(SESSION)" ]; then \
+		.venv/bin/python scripts/convert_bag_to_mcap.py --all; \
+	else \
+		.venv/bin/python scripts/convert_bag_to_mcap.py $(SESSION); \
+	fi
+
 # View container logs
 logs:
 	docker compose logs -f aiformula_ws

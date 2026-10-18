@@ -1,0 +1,149 @@
+{
+  "configById": {
+    "Image!camera": {
+      "cameraTopic": "/camera/image/compressed",
+      "enabledMarkerTopics": [],
+      "mode": "fit",
+      "transformMarkers": false,
+      "synchronize": false
+    },
+    "Image!panel": {
+      "cameraTopic": "/panel/image/compressed",
+      "enabledMarkerTopics": [],
+      "mode": "fit",
+      "transformMarkers": false,
+      "synchronize": false
+    },
+    "3D!scene": {
+      "cameraState": {
+        "perspective": true,
+        "distance": 8.0,
+        "phi": 60.0,
+        "thetaOffset": 0.0,
+        "targetOffset": [0, 0, 0],
+        "target": [0, 0, 0],
+        "targetOrientation": [0, 0, 0, 1],
+        "fovy": 45.0,
+        "near": 0.5,
+        "far": 5000.0
+      },
+      "followMode": "follow-pose",
+      "followTf": "base_link",
+      "scene": {
+        "enableStats": false,
+        "transforms": {
+          "showLabel": true,
+          "axisScale": 0.5
+        }
+      },
+      "transforms": {
+        "frame:base_link": {
+          "visible": true
+        },
+        "frame:odom": {
+          "visible": true
+        }
+      },
+      "topics": {
+        "/aiformula_sensing/gyro_odometry_publisher/odom": {
+          "visible": true
+        },
+        "/aiformula_visualization/six_lane_planner/target_path": {
+          "visible": true,
+          "color": "#00ff00ff"
+        },
+        "/aiformula_perception/lane_line_publisher/lane_lines/center": {
+          "visible": true,
+          "color": "#ffff00ff"
+        },
+        "/aiformula_perception/lane_line_publisher/lane_lines/left": {
+          "visible": true,
+          "color": "#ffffffaa"
+        },
+        "/aiformula_perception/lane_line_publisher/lane_lines/right": {
+          "visible": true,
+          "color": "#ffffffaa"
+        },
+        "/aiformula_visualization/cone_detector/markers": {
+          "visible": true
+        },
+        "/aiformula_perception/cone_detector/cones": {
+          "visible": true
+        },
+        "/aiformula_visualization/six_lane_planner/markers": {
+          "visible": true
+        }
+      },
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      }
+    },
+    "Plot!telemetry": {
+      "paths": [
+        {
+          "value": "/aiformula_control/twist_mux/cmd_vel.linear.x",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "Linear Vel (m/s)",
+          "color": "#4dabf7"
+        },
+        {
+          "value": "/aiformula_control/twist_mux/cmd_vel.angular.z",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "Angular Vel (rad/s)",
+          "color": "#ff8787"
+        },
+        {
+          "value": "/aiformula_control/six_lane_planner/cmd_vel.linear.x",
+          "enabled": false,
+          "timestampMethod": "receiveTime",
+          "label": "Planner Linear (m/s)",
+          "color": "#69db7c"
+        }
+      ],
+      "showLegend": true,
+      "xAxisVal": "timestamp"
+    },
+    "RawMessages!status": {
+      "topicPath": "/aiformula_control/six_lane_planner/status",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "linkedGlobalVariables": [],
+  "playbackConfig": {
+    "speed": 1.0
+  },
+  "layout": {
+    "direction": "row",
+    "first": {
+      "direction": "column",
+      "first": "Image!camera",
+      "second": "Image!panel",
+      "splitPercentage": 50
+    },
+    "second": {
+      "direction": "column",
+      "first": "3D!scene",
+      "second": {
+        "direction": "row",
+        "first": "Plot!telemetry",
+        "second": "RawMessages!status",
+        "splitPercentage": 60
+      },
+      "splitPercentage": 65
+    },
+    "splitPercentage": 35
+  }
+}
