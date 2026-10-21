@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-simulator",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/miyanswer/aiformula_machine && exec python3 web_simulator/serve.py 8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "segment-editor",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "/Users/miyanswer/aiformula_ws/scripts/segment_editor.py",
+        "8765"
+      ],
+      "port": 8765
+    },
+    {
+      "name": "road-mask-editor",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "/Users/miyanswer/aiformula_ws/scripts/road_mask_editor.py",
+        "8766"
+      ],
+      "port": 8766
+    }
+  ]
+}
