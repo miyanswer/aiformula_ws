@@ -1,0 +1,175 @@
+{
+  "configById": {
+    "Image!cam": {
+      "imageMode": {
+        "imageTopic": "/camera/image/compressed",
+        "synchronize": false,
+        "annotations": {
+          "/analysis/annotations/traffic_light": {
+            "visible": true
+          },
+          "/analysis/annotations/cones": {
+            "visible": true
+          }
+        }
+      },
+      "cameraTopic": "/camera/image/compressed",
+      "mode": "fit",
+      "transformMarkers": false,
+      "synchronize": false,
+      "enabledMarkerTopics": []
+    },
+    "Image!panel": {
+      "imageMode": {
+        "imageTopic": "/panel/image/compressed",
+        "synchronize": false
+      },
+      "cameraTopic": "/panel/image/compressed",
+      "mode": "fit",
+      "transformMarkers": false,
+      "synchronize": false,
+      "enabledMarkerTopics": []
+    },
+    "RosOut!events": {
+      "topicToRender": "/analysis/events",
+      "searchTerms": [],
+      "minLogLevel": 1
+    },
+    "Plot!speed": {
+      "title": "速度 [m/s]",
+      "paths": [
+        {
+          "value": "/analysis/planner.v_cmd",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "速度指令 (プランナー)"
+        },
+        {
+          "value": "/aiformula_control/twist_mux/cmd_vel.linear.x",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "最終の速度指令"
+        },
+        {
+          "value": "/analysis/planner.v_meas",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "実際の速度"
+        },
+        {
+          "value": "/analysis/traffic_light.v_cap",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "信号による上限"
+        },
+        {
+          "value": "/analysis/planner.speed_limit",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "速度上限"
+        }
+      ],
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "isSynced": true,
+      "xAxisVal": "timestamp"
+    },
+    "Plot!lane": {
+      "title": "レーン (1=左端)",
+      "paths": [
+        {
+          "value": "/analysis/planner.target_lane",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "目標レーン"
+        },
+        {
+          "value": "/analysis/planner.lane_pos",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "今の横位置"
+        },
+        {
+          "value": "/analysis/planner.blocked_count",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "塞がれたレーンの数"
+        },
+        {
+          "value": "/analysis/cones.nearest_x",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "一番近いコーンまで [m]"
+        }
+      ],
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "isSynced": true,
+      "xAxisVal": "timestamp"
+    },
+    "StateTransitions!tl": {
+      "paths": [
+        {
+          "value": "/analysis/traffic_light.state",
+          "timestampMethod": "receiveTime",
+          "label": "信号停止の状態"
+        },
+        {
+          "value": "/analysis/planner.phase",
+          "timestampMethod": "receiveTime",
+          "label": "局面"
+        }
+      ],
+      "isSynced": true
+    },
+    "RawMessages!planner": {
+      "topicPath": "/analysis/planner",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "expansion": "all"
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "linkedGlobalVariables": [],
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "direction": "row",
+    "first": {
+      "direction": "column",
+      "first": "Image!cam",
+      "second": {
+        "direction": "row",
+        "first": "Image!panel",
+        "second": "RosOut!events",
+        "splitPercentage": 45
+      },
+      "splitPercentage": 62
+    },
+    "second": {
+      "direction": "column",
+      "first": "Plot!speed",
+      "second": {
+        "direction": "column",
+        "first": "Plot!lane",
+        "second": {
+          "direction": "column",
+          "first": "StateTransitions!tl",
+          "second": "RawMessages!planner",
+          "splitPercentage": 30
+        },
+        "splitPercentage": 40
+      },
+      "splitPercentage": 30
+    },
+    "splitPercentage": 58
+  }
+}

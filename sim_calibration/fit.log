@@ -1,0 +1,483 @@
+cost 14.4833 conv 0.0004 iz=12.000 h=0.250 mu=0.800 k0=0.080 a0=0.120 kp=400.000 ki=800.000 fmax=180.000 jw=6.000 delay=0.080 mu_r=0.050 roll=15.000 scale_r=1.014 scale_l=1.014
+cost 14.4833 conv 0.0070 iz=12.000 h=0.250 mu=0.800 k0=0.080 a0=0.120 kp=400.000 ki=800.000 fmax=180.000 jw=6.000 delay=0.080 mu_r=0.050 roll=15.000 scale_r=1.014 scale_l=1.014
+cost 12.2889 conv 0.0064 iz=28.054 h=0.240 mu=1.063 k0=0.352 a0=0.170 kp=823.138 ki=1318.558 fmax=177.890 jw=9.563 delay=0.093 mu_r=0.019 roll=11.640 scale_r=1.015 scale_l=1.016
+cost 12.2889 conv 0.0095 iz=28.054 h=0.240 mu=1.063 k0=0.352 a0=0.170 kp=823.138 ki=1318.558 fmax=177.890 jw=9.563 delay=0.093 mu_r=0.019 roll=11.640 scale_r=1.015 scale_l=1.016
+cost 12.2889 conv 0.0091 iz=28.054 h=0.240 mu=1.063 k0=0.352 a0=0.170 kp=823.138 ki=1318.558 fmax=177.890 jw=9.563 delay=0.093 mu_r=0.019 roll=11.640 scale_r=1.015 scale_l=1.016
+cost 12.2889 conv 0.0086 iz=28.054 h=0.240 mu=1.063 k0=0.352 a0=0.170 kp=823.138 ki=1318.558 fmax=177.890 jw=9.563 delay=0.093 mu_r=0.019 roll=11.640 scale_r=1.015 scale_l=1.016
+cost 12.1033 conv 0.0081 iz=25.304 h=0.242 mu=1.264 k0=0.374 a0=0.273 kp=505.239 ki=1904.456 fmax=203.490 jw=12.108 delay=0.079 mu_r=0.015 roll=0.857 scale_r=1.013 scale_l=1.015
+cost 10.2794 conv 0.0074 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0072 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0068 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0068 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0069 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0068 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0067 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0069 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0071 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 10.2794 conv 0.0078 iz=8.108 h=0.188 mu=1.071 k0=0.245 a0=0.390 kp=1525.363 ki=623.367 fmax=227.808 jw=14.204 delay=0.127 mu_r=0.033 roll=27.933 scale_r=1.007 scale_l=1.007
+cost 9.8789 conv 0.0078 iz=7.153 h=0.133 mu=0.800 k0=0.197 a0=0.371 kp=1228.527 ki=1931.342 fmax=312.834 jw=18.822 delay=0.103 mu_r=0.028 roll=22.166 scale_r=1.012 scale_l=1.013
+cost 9.8789 conv 0.0079 iz=7.153 h=0.133 mu=0.800 k0=0.197 a0=0.371 kp=1228.527 ki=1931.342 fmax=312.834 jw=18.822 delay=0.103 mu_r=0.028 roll=22.166 scale_r=1.012 scale_l=1.013
+cost 9.8789 conv 0.0082 iz=7.153 h=0.133 mu=0.800 k0=0.197 a0=0.371 kp=1228.527 ki=1931.342 fmax=312.834 jw=18.822 delay=0.103 mu_r=0.028 roll=22.166 scale_r=1.012 scale_l=1.013
+cost 9.7866 conv 0.0087 iz=13.966 h=0.166 mu=1.245 k0=0.245 a0=0.304 kp=910.669 ki=623.367 fmax=285.253 jw=20.712 delay=0.127 mu_r=0.023 roll=18.423 scale_r=0.999 scale_l=1.000
+cost 9.4870 conv 0.0080 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0081 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0084 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0088 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0092 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0091 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0091 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0091 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0095 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.4870 conv 0.0096 iz=10.105 h=0.107 mu=1.084 k0=0.166 a0=0.320 kp=948.564 ki=298.232 fmax=287.993 jw=5.856 delay=0.136 mu_r=0.022 roll=14.608 scale_r=1.000 scale_l=1.001
+cost 9.3886 conv 0.0111 iz=10.993 h=0.117 mu=1.105 k0=0.232 a0=0.265 kp=912.962 ki=647.758 fmax=312.287 jw=7.449 delay=0.121 mu_r=0.028 roll=23.537 scale_r=1.004 scale_l=1.006
+cost 9.1073 conv 0.0112 iz=9.151 h=0.118 mu=1.165 k0=0.182 a0=0.373 kp=373.384 ki=215.337 fmax=222.236 jw=12.168 delay=0.107 mu_r=0.032 roll=25.126 scale_r=1.015 scale_l=1.016
+cost 8.9831 conv 0.0114 iz=7.212 h=0.192 mu=1.061 k0=0.094 a0=0.373 kp=373.384 ki=115.165 fmax=201.596 jw=7.100 delay=0.087 mu_r=0.032 roll=25.126 scale_r=1.013 scale_l=1.014
+cost 8.9831 conv 0.0117 iz=7.212 h=0.192 mu=1.061 k0=0.094 a0=0.373 kp=373.384 ki=115.165 fmax=201.596 jw=7.100 delay=0.087 mu_r=0.032 roll=25.126 scale_r=1.013 scale_l=1.014
+cost 8.9831 conv 0.0117 iz=7.212 h=0.192 mu=1.061 k0=0.094 a0=0.373 kp=373.384 ki=115.165 fmax=201.596 jw=7.100 delay=0.087 mu_r=0.032 roll=25.126 scale_r=1.013 scale_l=1.014
+cost 8.9831 conv 0.0118 iz=7.212 h=0.192 mu=1.061 k0=0.094 a0=0.373 kp=373.384 ki=115.165 fmax=201.596 jw=7.100 delay=0.087 mu_r=0.032 roll=25.126 scale_r=1.013 scale_l=1.014
+cost 8.2499 conv 0.0112 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0111 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0113 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0112 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0112 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0112 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0115 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0113 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0115 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0115 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0119 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0118 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0122 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0121 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0119 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0118 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0115 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0118 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0117 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0119 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0122 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0128 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+cost 8.2499 conv 0.0125 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009
+done 8.249948984967197
+cost 77.1417 conv 0.0013 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0097 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0129 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0120 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0111 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0104 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0102 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 77.1417 conv 0.0099 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.900
+cost 73.6525 conv 0.0097 iz=14.393 h=0.153 mu=0.814 k0=0.235 a0=0.042 kp=1244.441 ki=71.651 fmax=210.678 jw=7.014 delay=0.008 mu_r=0.042 roll=22.015 scale_r=1.000 scale_l=1.000 slide=0.784
+cost 73.6525 conv 0.0093 iz=14.393 h=0.153 mu=0.814 k0=0.235 a0=0.042 kp=1244.441 ki=71.651 fmax=210.678 jw=7.014 delay=0.008 mu_r=0.042 roll=22.015 scale_r=1.000 scale_l=1.000 slide=0.784
+cost 73.6525 conv 0.0095 iz=14.393 h=0.153 mu=0.814 k0=0.235 a0=0.042 kp=1244.441 ki=71.651 fmax=210.678 jw=7.014 delay=0.008 mu_r=0.042 roll=22.015 scale_r=1.000 scale_l=1.000 slide=0.784
+cost 73.6525 conv 0.0095 iz=14.393 h=0.153 mu=0.814 k0=0.235 a0=0.042 kp=1244.441 ki=71.651 fmax=210.678 jw=7.014 delay=0.008 mu_r=0.042 roll=22.015 scale_r=1.000 scale_l=1.000 slide=0.784
+cost 71.5439 conv 0.0092 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0093 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0092 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0097 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0101 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0105 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0106 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0109 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 71.5439 conv 0.0113 iz=13.791 h=0.305 mu=0.891 k0=0.314 a0=0.070 kp=1393.383 ki=1122.140 fmax=357.655 jw=5.983 delay=0.070 mu_r=0.038 roll=18.820 scale_r=0.992 scale_l=0.992 slide=0.898
+cost 62.5687 conv 0.0113 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0113 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0115 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0113 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0118 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0114 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0115 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0115 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0115 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0118 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0116 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0115 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0114 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0121 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0122 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0120 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0121 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0119 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 62.5687 conv 0.0117 iz=11.181 h=0.247 mu=0.892 k0=0.148 a0=0.157 kp=208.323 ki=1552.236 fmax=106.722 jw=14.964 delay=0.045 mu_r=0.026 roll=9.190 scale_r=0.997 scale_l=0.996 slide=0.564
+cost 61.8258 conv 0.0118 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0119 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0120 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0124 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0126 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0126 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 61.8258 conv 0.0127 iz=13.008 h=0.302 mu=0.904 k0=0.151 a0=0.163 kp=394.822 ki=1113.250 fmax=142.812 jw=20.985 delay=0.072 mu_r=0.025 roll=11.408 scale_r=1.000 scale_l=0.998 slide=0.618
+cost 54.3704 conv 0.0120 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0125 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0127 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0128 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0134 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0136 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0136 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0131 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0131 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0131 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0133 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0134 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0134 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0136 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0133 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0133 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0134 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+cost 54.3704 conv 0.0133 iz=12.910 h=0.311 mu=1.038 k0=0.126 a0=0.065 kp=228.016 ki=3103.051 fmax=117.148 jw=19.402 delay=0.086 mu_r=0.023 roll=4.618 scale_r=1.011 scale_l=1.008 slide=0.540
+done 54.37043300520451
+cost 32.7220 conv 0.0088 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0110 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0122 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0130 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0135 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0141 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0137 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 32.7220 conv 0.0123 iz=8.895 h=0.101 mu=1.164 k0=0.091 a0=0.301 kp=391.401 ki=90.177 fmax=315.411 jw=2.887 delay=0.085 mu_r=0.027 roll=17.293 scale_r=1.009 scale_l=1.009 slide=0.800
+cost 30.9936 conv 0.0103 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0101 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0095 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0096 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0099 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0099 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0097 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0095 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0095 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0094 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.9936 conv 0.0095 iz=10.746 h=0.112 mu=0.900 k0=0.132 a0=0.237 kp=966.156 ki=688.264 fmax=237.949 jw=4.077 delay=0.123 mu_r=0.008 roll=19.795 scale_r=1.004 scale_l=1.003 slide=0.424
+cost 30.0798 conv 0.0094 iz=9.958 h=0.143 mu=0.692 k0=0.126 a0=0.261 kp=1033.193 ki=478.228 fmax=294.701 jw=3.577 delay=0.118 mu_r=0.015 roll=21.372 scale_r=1.002 scale_l=1.002 slide=0.797
+cost 30.0798 conv 0.0094 iz=9.958 h=0.143 mu=0.692 k0=0.126 a0=0.261 kp=1033.193 ki=478.228 fmax=294.701 jw=3.577 delay=0.118 mu_r=0.015 roll=21.372 scale_r=1.002 scale_l=1.002 slide=0.797
+cost 28.3197 conv 0.0091 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0092 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0089 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0088 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0088 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0087 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0091 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 28.3197 conv 0.0092 iz=12.996 h=0.128 mu=1.203 k0=0.153 a0=0.187 kp=592.141 ki=381.019 fmax=273.164 jw=1.743 delay=0.097 mu_r=0.014 roll=20.852 scale_r=0.998 scale_l=0.996 slide=0.688
+cost 27.4979 conv 0.0089 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0092 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0098 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0098 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0105 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0108 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0110 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 27.4979 conv 0.0118 iz=13.684 h=0.194 mu=1.313 k0=0.216 a0=0.183 kp=685.891 ki=85.057 fmax=300.609 jw=3.604 delay=0.104 mu_r=0.023 roll=31.772 scale_r=1.011 scale_l=1.008 slide=0.621
+cost 26.8832 conv 0.0115 iz=14.036 h=0.221 mu=1.267 k0=0.190 a0=0.152 kp=511.290 ki=206.611 fmax=341.241 jw=1.605 delay=0.100 mu_r=0.027 roll=33.596 scale_r=1.005 scale_l=1.002 slide=0.677
+cost 26.8646 conv 0.0116 iz=14.431 h=0.208 mu=1.795 k0=0.298 a0=0.074 kp=529.941 ki=79.627 fmax=286.439 jw=1.852 delay=0.070 mu_r=0.036 roll=34.821 scale_r=1.003 scale_l=1.001 slide=0.718
+cost 26.8646 conv 0.0118 iz=14.431 h=0.208 mu=1.795 k0=0.298 a0=0.074 kp=529.941 ki=79.627 fmax=286.439 jw=1.852 delay=0.070 mu_r=0.036 roll=34.821 scale_r=1.003 scale_l=1.001 slide=0.718
+cost 26.8646 conv 0.0118 iz=14.431 h=0.208 mu=1.795 k0=0.298 a0=0.074 kp=529.941 ki=79.627 fmax=286.439 jw=1.852 delay=0.070 mu_r=0.036 roll=34.821 scale_r=1.003 scale_l=1.001 slide=0.718
+cost 26.8646 conv 0.0120 iz=14.431 h=0.208 mu=1.795 k0=0.298 a0=0.074 kp=529.941 ki=79.627 fmax=286.439 jw=1.852 delay=0.070 mu_r=0.036 roll=34.821 scale_r=1.003 scale_l=1.001 slide=0.718
+cost 26.1270 conv 0.0119 iz=12.346 h=0.138 mu=1.568 k0=0.284 a0=0.136 kp=807.523 ki=99.856 fmax=293.773 jw=2.504 delay=0.088 mu_r=0.027 roll=34.354 scale_r=1.006 scale_l=1.004 slide=0.627
+cost 26.1270 conv 0.0123 iz=12.346 h=0.138 mu=1.568 k0=0.284 a0=0.136 kp=807.523 ki=99.856 fmax=293.773 jw=2.504 delay=0.088 mu_r=0.027 roll=34.354 scale_r=1.006 scale_l=1.004 slide=0.627
+cost 26.1270 conv 0.0118 iz=12.346 h=0.138 mu=1.568 k0=0.284 a0=0.136 kp=807.523 ki=99.856 fmax=293.773 jw=2.504 delay=0.088 mu_r=0.027 roll=34.354 scale_r=1.006 scale_l=1.004 slide=0.627
+cost 26.1270 conv 0.0118 iz=12.346 h=0.138 mu=1.568 k0=0.284 a0=0.136 kp=807.523 ki=99.856 fmax=293.773 jw=2.504 delay=0.088 mu_r=0.027 roll=34.354 scale_r=1.006 scale_l=1.004 slide=0.627
+cost 26.1258 conv 0.0119 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0125 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0128 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0134 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0133 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0132 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 26.1258 conv 0.0137 iz=13.228 h=0.152 mu=1.455 k0=0.243 a0=0.245 kp=540.573 ki=111.428 fmax=286.649 jw=4.018 delay=0.087 mu_r=0.023 roll=34.381 scale_r=0.997 scale_l=0.996 slide=0.439
+cost 25.6735 conv 0.0145 iz=12.430 h=0.152 mu=1.566 k0=0.239 a0=0.106 kp=655.289 ki=54.399 fmax=306.777 jw=5.284 delay=0.093 mu_r=0.026 roll=39.352 scale_r=0.998 scale_l=0.996 slide=0.717
+cost 25.6735 conv 0.0149 iz=12.430 h=0.152 mu=1.566 k0=0.239 a0=0.106 kp=655.289 ki=54.399 fmax=306.777 jw=5.284 delay=0.093 mu_r=0.026 roll=39.352 scale_r=0.998 scale_l=0.996 slide=0.717
+cost 25.6735 conv 0.0154 iz=12.430 h=0.152 mu=1.566 k0=0.239 a0=0.106 kp=655.289 ki=54.399 fmax=306.777 jw=5.284 delay=0.093 mu_r=0.026 roll=39.352 scale_r=0.998 scale_l=0.996 slide=0.717
+cost 25.6735 conv 0.0154 iz=12.430 h=0.152 mu=1.566 k0=0.239 a0=0.106 kp=655.289 ki=54.399 fmax=306.777 jw=5.284 delay=0.093 mu_r=0.026 roll=39.352 scale_r=0.998 scale_l=0.996 slide=0.717
+cost 24.6358 conv 0.0158 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0154 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0153 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0151 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0154 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0154 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0159 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0153 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0157 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0154 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0157 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6358 conv 0.0159 iz=10.766 h=0.122 mu=1.795 k0=0.240 a0=0.164 kp=519.469 ki=94.268 fmax=313.101 jw=6.479 delay=0.086 mu_r=0.028 roll=29.351 scale_r=0.996 scale_l=0.994 slide=0.666
+cost 24.6004 conv 0.0158 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.6004 conv 0.0160 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.6004 conv 0.0161 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.6004 conv 0.0166 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.6004 conv 0.0167 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.6004 conv 0.0165 iz=13.088 h=0.122 mu=1.604 k0=0.245 a0=0.106 kp=554.457 ki=149.788 fmax=352.444 jw=5.832 delay=0.088 mu_r=0.029 roll=38.471 scale_r=0.999 scale_l=0.997 slide=0.755
+cost 24.5171 conv 0.0167 iz=13.320 h=0.106 mu=1.520 k0=0.228 a0=0.094 kp=597.811 ki=97.508 fmax=331.267 jw=6.479 delay=0.084 mu_r=0.028 roll=11.608 scale_r=1.002 scale_l=1.000 slide=0.657
+cost 24.3507 conv 0.0173 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0176 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0183 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0186 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0191 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0202 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0225 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0225 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0233 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0248 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3507 conv 0.0259 iz=11.723 h=0.136 mu=1.525 k0=0.213 a0=0.153 kp=558.740 ki=105.982 fmax=315.213 jw=6.116 delay=0.083 mu_r=0.026 roll=11.822 scale_r=0.999 scale_l=0.997 slide=0.682
+cost 24.3249 conv 0.0281 iz=11.462 h=0.126 mu=1.515 k0=0.229 a0=0.142 kp=578.473 ki=84.153 fmax=359.376 jw=5.996 delay=0.078 mu_r=0.028 roll=3.995 scale_r=0.997 scale_l=0.996 slide=0.880
+cost 24.3249 conv 0.0296 iz=11.462 h=0.126 mu=1.515 k0=0.229 a0=0.142 kp=578.473 ki=84.153 fmax=359.376 jw=5.996 delay=0.078 mu_r=0.028 roll=3.995 scale_r=0.997 scale_l=0.996 slide=0.880
+cost 24.2452 conv 0.0338 iz=11.141 h=0.145 mu=1.732 k0=0.262 a0=0.177 kp=542.177 ki=116.891 fmax=339.958 jw=7.500 delay=0.086 mu_r=0.028 roll=16.722 scale_r=0.995 scale_l=0.993 slide=0.880
+done 24.245206755767274
+cost 39.2192 conv 0.0081 iz=11.141 h=0.145 mu=1.732 k0=0.262 a0=0.177 kp=542.177 ki=116.891 fmax=339.958 jw=7.500 delay=0.086 mu_r=0.028 roll=16.722 scale_r=1.010 scale_l=1.010 slide=0.880
+cost 39.2192 conv 0.0091 iz=11.141 h=0.145 mu=1.732 k0=0.262 a0=0.177 kp=542.177 ki=116.891 fmax=339.958 jw=7.500 delay=0.086 mu_r=0.028 roll=16.722 scale_r=1.010 scale_l=1.010 slide=0.880
+cost 36.8446 conv 0.0102 iz=9.961 h=0.181 mu=1.012 k0=0.161 a0=0.347 kp=1229.321 ki=942.087 fmax=269.007 jw=7.610 delay=0.095 mu_r=0.021 roll=34.626 scale_r=1.012 scale_l=1.008 slide=0.907
+cost 36.8446 conv 0.0100 iz=9.961 h=0.181 mu=1.012 k0=0.161 a0=0.347 kp=1229.321 ki=942.087 fmax=269.007 jw=7.610 delay=0.095 mu_r=0.021 roll=34.626 scale_r=1.012 scale_l=1.008 slide=0.907
+cost 36.8446 conv 0.0101 iz=9.961 h=0.181 mu=1.012 k0=0.161 a0=0.347 kp=1229.321 ki=942.087 fmax=269.007 jw=7.610 delay=0.095 mu_r=0.021 roll=34.626 scale_r=1.012 scale_l=1.008 slide=0.907
+cost 36.8446 conv 0.0103 iz=9.961 h=0.181 mu=1.012 k0=0.161 a0=0.347 kp=1229.321 ki=942.087 fmax=269.007 jw=7.610 delay=0.095 mu_r=0.021 roll=34.626 scale_r=1.012 scale_l=1.008 slide=0.907
+cost 36.8446 conv 0.0104 iz=9.961 h=0.181 mu=1.012 k0=0.161 a0=0.347 kp=1229.321 ki=942.087 fmax=269.007 jw=7.610 delay=0.095 mu_r=0.021 roll=34.626 scale_r=1.012 scale_l=1.008 slide=0.907
+cost 33.2824 conv 0.0096 iz=11.248 h=0.157 mu=0.892 k0=0.170 a0=0.350 kp=1154.678 ki=1904.265 fmax=221.788 jw=6.036 delay=0.109 mu_r=0.009 roll=19.478 scale_r=1.008 scale_l=1.007 slide=0.802
+cost 33.2824 conv 0.0095 iz=11.248 h=0.157 mu=0.892 k0=0.170 a0=0.350 kp=1154.678 ki=1904.265 fmax=221.788 jw=6.036 delay=0.109 mu_r=0.009 roll=19.478 scale_r=1.008 scale_l=1.007 slide=0.802
+cost 33.2824 conv 0.0100 iz=11.248 h=0.157 mu=0.892 k0=0.170 a0=0.350 kp=1154.678 ki=1904.265 fmax=221.788 jw=6.036 delay=0.109 mu_r=0.009 roll=19.478 scale_r=1.008 scale_l=1.007 slide=0.802
+cost 32.4423 conv 0.0095 iz=13.898 h=0.157 mu=1.264 k0=0.227 a0=0.321 kp=1150.842 ki=184.174 fmax=383.779 jw=6.000 delay=0.124 mu_r=0.017 roll=15.356 scale_r=1.019 scale_l=1.018 slide=0.720
+cost 32.4423 conv 0.0091 iz=13.898 h=0.157 mu=1.264 k0=0.227 a0=0.321 kp=1150.842 ki=184.174 fmax=383.779 jw=6.000 delay=0.124 mu_r=0.017 roll=15.356 scale_r=1.019 scale_l=1.018 slide=0.720
+cost 32.4423 conv 0.0089 iz=13.898 h=0.157 mu=1.264 k0=0.227 a0=0.321 kp=1150.842 ki=184.174 fmax=383.779 jw=6.000 delay=0.124 mu_r=0.017 roll=15.356 scale_r=1.019 scale_l=1.018 slide=0.720
+cost 32.4423 conv 0.0090 iz=13.898 h=0.157 mu=1.264 k0=0.227 a0=0.321 kp=1150.842 ki=184.174 fmax=383.779 jw=6.000 delay=0.124 mu_r=0.017 roll=15.356 scale_r=1.019 scale_l=1.018 slide=0.720
+cost 31.8834 conv 0.0087 iz=5.372 h=0.104 mu=1.214 k0=0.223 a0=0.346 kp=1478.930 ki=611.840 fmax=281.520 jw=4.774 delay=0.115 mu_r=0.026 roll=21.465 scale_r=1.013 scale_l=1.011 slide=0.741
+cost 31.6553 conv 0.0089 iz=7.497 h=0.115 mu=1.276 k0=0.246 a0=0.328 kp=1128.813 ki=571.471 fmax=306.233 jw=6.928 delay=0.095 mu_r=0.028 roll=18.389 scale_r=1.011 scale_l=1.010 slide=0.765
+cost 31.6553 conv 0.0090 iz=7.497 h=0.115 mu=1.276 k0=0.246 a0=0.328 kp=1128.813 ki=571.471 fmax=306.233 jw=6.928 delay=0.095 mu_r=0.028 roll=18.389 scale_r=1.011 scale_l=1.010 slide=0.765
+cost 30.9006 conv 0.0091 iz=18.536 h=0.288 mu=1.167 k0=0.252 a0=0.037 kp=1447.115 ki=252.952 fmax=304.303 jw=2.370 delay=0.115 mu_r=0.025 roll=19.871 scale_r=1.011 scale_l=1.011 slide=0.514
+cost 29.7056 conv 0.0088 iz=15.523 h=0.317 mu=1.327 k0=0.269 a0=0.102 kp=690.194 ki=14.173 fmax=328.499 jw=5.392 delay=0.101 mu_r=0.033 roll=22.974 scale_r=1.009 scale_l=1.007 slide=0.527
+cost 29.0912 conv 0.0092 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0094 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0094 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0098 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0101 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0100 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0103 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0106 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0108 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0107 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0111 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0112 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0114 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0116 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0117 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0121 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0120 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0123 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0130 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 29.0912 conv 0.0137 iz=15.598 h=0.302 mu=1.497 k0=0.300 a0=0.046 kp=929.815 ki=864.967 fmax=357.901 jw=6.119 delay=0.132 mu_r=0.029 roll=17.161 scale_r=1.007 scale_l=1.006 slide=0.615
+cost 28.9823 conv 0.0142 iz=13.907 h=0.168 mu=1.150 k0=0.262 a0=0.055 kp=1343.173 ki=76.458 fmax=312.812 jw=5.653 delay=0.140 mu_r=0.035 roll=12.593 scale_r=1.010 scale_l=1.008 slide=0.516
+cost 28.9823 conv 0.0142 iz=13.907 h=0.168 mu=1.150 k0=0.262 a0=0.055 kp=1343.173 ki=76.458 fmax=312.812 jw=5.653 delay=0.140 mu_r=0.035 roll=12.593 scale_r=1.010 scale_l=1.008 slide=0.516
+cost 28.9823 conv 0.0151 iz=13.907 h=0.168 mu=1.150 k0=0.262 a0=0.055 kp=1343.173 ki=76.458 fmax=312.812 jw=5.653 delay=0.140 mu_r=0.035 roll=12.593 scale_r=1.010 scale_l=1.008 slide=0.516
+cost 28.6058 conv 0.0150 iz=12.654 h=0.161 mu=1.120 k0=0.221 a0=0.118 kp=1176.217 ki=22.764 fmax=252.478 jw=7.932 delay=0.130 mu_r=0.031 roll=4.940 scale_r=1.010 scale_l=1.008 slide=0.778
+cost 28.6058 conv 0.0157 iz=12.654 h=0.161 mu=1.120 k0=0.221 a0=0.118 kp=1176.217 ki=22.764 fmax=252.478 jw=7.932 delay=0.130 mu_r=0.031 roll=4.940 scale_r=1.010 scale_l=1.008 slide=0.778
+cost 27.6371 conv 0.0163 iz=13.328 h=0.177 mu=1.196 k0=0.215 a0=0.106 kp=966.019 ki=371.873 fmax=283.732 jw=4.547 delay=0.116 mu_r=0.027 roll=14.397 scale_r=1.009 scale_l=1.008 slide=0.606
+cost 27.6371 conv 0.0170 iz=13.328 h=0.177 mu=1.196 k0=0.215 a0=0.106 kp=966.019 ki=371.873 fmax=283.732 jw=4.547 delay=0.116 mu_r=0.027 roll=14.397 scale_r=1.009 scale_l=1.008 slide=0.606
+cost 27.6371 conv 0.0174 iz=13.328 h=0.177 mu=1.196 k0=0.215 a0=0.106 kp=966.019 ki=371.873 fmax=283.732 jw=4.547 delay=0.116 mu_r=0.027 roll=14.397 scale_r=1.009 scale_l=1.008 slide=0.606
+cost 27.5144 conv 0.0188 iz=12.918 h=0.193 mu=1.279 k0=0.198 a0=0.155 kp=788.003 ki=56.894 fmax=274.704 jw=3.384 delay=0.106 mu_r=0.026 roll=25.472 scale_r=1.010 scale_l=1.008 slide=0.564
+cost 27.2934 conv 0.0187 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 27.2934 conv 0.0186 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+done 27.293389326043723
+cost 28.2560 conv 0.0062 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0067 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0067 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0071 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0067 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0073 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0073 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0075 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0082 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0080 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0090 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0091 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0087 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0082 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0079 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0087 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0086 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 28.2560 conv 0.0086 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440
+cost 27.9834 conv 0.0085 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0084 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0086 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0091 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0097 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0098 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0098 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0099 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0102 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0100 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0104 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0104 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.9834 conv 0.0105 iz=13.295 h=0.226 mu=1.497 k0=0.281 a0=0.059 kp=846.978 ki=44.303 fmax=291.220 jw=3.124 delay=0.102 mu_r=0.035 roll=22.817 scale_r=1.011 scale_l=1.010 slide=0.645
+cost 27.3270 conv 0.0106 iz=14.221 h=0.159 mu=1.802 k0=0.353 a0=0.037 kp=771.878 ki=0.099 fmax=314.435 jw=2.977 delay=0.104 mu_r=0.035 roll=21.320 scale_r=1.013 scale_l=1.010 slide=0.757
+cost 26.6485 conv 0.0109 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0109 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0109 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0108 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0109 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0110 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0119 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+cost 26.6485 conv 0.0122 iz=13.476 h=0.166 mu=1.802 k0=0.313 a0=0.034 kp=771.878 ki=4.285 fmax=314.962 jw=2.977 delay=0.094 mu_r=0.033 roll=17.727 scale_r=1.013 scale_l=1.011 slide=0.829
+done 26.648542270479137
+cost 51.1323 conv 0.0107 iz=39.899 h=0.315 mu=1.439 k0=0.103 a0=0.068 kp=2377.697 ki=91.495 fmax=327.330 jw=4.464 delay=0.145 mu_r=0.001 roll=33.058 scale_r=1.006 scale_l=0.996 slide=0.406 scrub=12.189
+cost 51.1323 conv 0.0131 iz=39.899 h=0.315 mu=1.439 k0=0.103 a0=0.068 kp=2377.697 ki=91.495 fmax=327.330 jw=4.464 delay=0.145 mu_r=0.001 roll=33.058 scale_r=1.006 scale_l=0.996 slide=0.406 scrub=12.189
+cost 50.7481 conv 0.0158 iz=29.869 h=0.407 mu=1.863 k0=0.227 a0=0.052 kp=1913.002 ki=16.884 fmax=259.036 jw=4.843 delay=0.170 mu_r=0.016 roll=20.549 scale_r=1.020 scale_l=1.000 slide=0.619 scrub=4.937
+cost 47.6859 conv 0.0158 iz=18.581 h=0.456 mu=1.572 k0=0.317 a0=0.191 kp=1951.731 ki=814.102 fmax=327.425 jw=2.784 delay=0.140 mu_r=0.017 roll=25.462 scale_r=1.013 scale_l=0.996 slide=0.419 scrub=7.767
+cost 44.9951 conv 0.0151 iz=26.501 h=0.309 mu=1.789 k0=0.352 a0=0.105 kp=1755.596 ki=1675.420 fmax=307.293 jw=6.302 delay=0.112 mu_r=0.001 roll=25.198 scale_r=1.005 scale_l=0.999 slide=0.808 scrub=3.203
+cost 43.1959 conv 0.0141 iz=15.613 h=0.224 mu=1.801 k0=0.367 a0=0.188 kp=808.396 ki=943.431 fmax=356.109 jw=7.217 delay=0.139 mu_r=0.036 roll=29.506 scale_r=1.009 scale_l=1.007 slide=0.891 scrub=0.426
+cost 43.1959 conv 0.0138 iz=15.613 h=0.224 mu=1.801 k0=0.367 a0=0.188 kp=808.396 ki=943.431 fmax=356.109 jw=7.217 delay=0.139 mu_r=0.036 roll=29.506 scale_r=1.009 scale_l=1.007 slide=0.891 scrub=0.426
+cost 43.1959 conv 0.0142 iz=15.613 h=0.224 mu=1.801 k0=0.367 a0=0.188 kp=808.396 ki=943.431 fmax=356.109 jw=7.217 delay=0.139 mu_r=0.036 roll=29.506 scale_r=1.009 scale_l=1.007 slide=0.891 scrub=0.426
+cost 43.1959 conv 0.0139 iz=15.613 h=0.224 mu=1.801 k0=0.367 a0=0.188 kp=808.396 ki=943.431 fmax=356.109 jw=7.217 delay=0.139 mu_r=0.036 roll=29.506 scale_r=1.009 scale_l=1.007 slide=0.891 scrub=0.426
+cost 41.5731 conv 0.0141 iz=12.119 h=0.138 mu=0.924 k0=0.283 a0=0.051 kp=1459.361 ki=2553.078 fmax=249.088 jw=1.962 delay=0.132 mu_r=0.059 roll=12.886 scale_r=1.012 scale_l=1.000 slide=0.723 scrub=0.668
+cost 41.5731 conv 0.0144 iz=12.119 h=0.138 mu=0.924 k0=0.283 a0=0.051 kp=1459.361 ki=2553.078 fmax=249.088 jw=1.962 delay=0.132 mu_r=0.059 roll=12.886 scale_r=1.012 scale_l=1.000 slide=0.723 scrub=0.668
+cost 41.5731 conv 0.0150 iz=12.119 h=0.138 mu=0.924 k0=0.283 a0=0.051 kp=1459.361 ki=2553.078 fmax=249.088 jw=1.962 delay=0.132 mu_r=0.059 roll=12.886 scale_r=1.012 scale_l=1.000 slide=0.723 scrub=0.668
+cost 40.9188 conv 0.0138 iz=19.269 h=0.424 mu=1.827 k0=0.355 a0=0.024 kp=696.858 ki=2442.689 fmax=323.677 jw=1.019 delay=0.140 mu_r=0.023 roll=34.706 scale_r=1.000 scale_l=1.001 slide=0.927 scrub=1.327
+cost 40.9188 conv 0.0137 iz=19.269 h=0.424 mu=1.827 k0=0.355 a0=0.024 kp=696.858 ki=2442.689 fmax=323.677 jw=1.019 delay=0.140 mu_r=0.023 roll=34.706 scale_r=1.000 scale_l=1.001 slide=0.927 scrub=1.327
+cost 40.0796 conv 0.0135 iz=14.370 h=0.448 mu=1.516 k0=0.300 a0=0.267 kp=1271.359 ki=866.628 fmax=227.907 jw=3.591 delay=0.120 mu_r=0.018 roll=18.908 scale_r=1.005 scale_l=1.007 slide=0.874 scrub=1.104
+cost 40.0796 conv 0.0136 iz=14.370 h=0.448 mu=1.516 k0=0.300 a0=0.267 kp=1271.359 ki=866.628 fmax=227.907 jw=3.591 delay=0.120 mu_r=0.018 roll=18.908 scale_r=1.005 scale_l=1.007 slide=0.874 scrub=1.104
+cost 37.2844 conv 0.0131 iz=13.160 h=0.334 mu=1.875 k0=0.359 a0=0.115 kp=2182.666 ki=1043.105 fmax=260.760 jw=3.473 delay=0.108 mu_r=0.018 roll=17.267 scale_r=1.005 scale_l=1.003 slide=0.605 scrub=0.831
+cost 37.2844 conv 0.0132 iz=13.160 h=0.334 mu=1.875 k0=0.359 a0=0.115 kp=2182.666 ki=1043.105 fmax=260.760 jw=3.473 delay=0.108 mu_r=0.018 roll=17.267 scale_r=1.005 scale_l=1.003 slide=0.605 scrub=0.831
+cost 37.2844 conv 0.0133 iz=13.160 h=0.334 mu=1.875 k0=0.359 a0=0.115 kp=2182.666 ki=1043.105 fmax=260.760 jw=3.473 delay=0.108 mu_r=0.018 roll=17.267 scale_r=1.005 scale_l=1.003 slide=0.605 scrub=0.831
+cost 37.2844 conv 0.0129 iz=13.160 h=0.334 mu=1.875 k0=0.359 a0=0.115 kp=2182.666 ki=1043.105 fmax=260.760 jw=3.473 delay=0.108 mu_r=0.018 roll=17.267 scale_r=1.005 scale_l=1.003 slide=0.605 scrub=0.831
+cost 37.2844 conv 0.0121 iz=13.160 h=0.334 mu=1.875 k0=0.359 a0=0.115 kp=2182.666 ki=1043.105 fmax=260.760 jw=3.473 delay=0.108 mu_r=0.018 roll=17.267 scale_r=1.005 scale_l=1.003 slide=0.605 scrub=0.831
+cost 34.6064 conv 0.0117 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0115 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0114 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0111 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0110 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0104 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0105 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0108 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0109 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0108 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0112 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0111 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0120 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0124 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0124 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0127 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.6064 conv 0.0131 iz=11.631 h=0.392 mu=1.861 k0=0.355 a0=0.162 kp=1872.050 ki=998.896 fmax=360.490 jw=2.159 delay=0.147 mu_r=0.030 roll=25.867 scale_r=1.006 scale_l=1.004 slide=0.606 scrub=0.479
+cost 34.5688 conv 0.0136 iz=8.193 h=0.309 mu=1.690 k0=0.293 a0=0.137 kp=765.404 ki=36.588 fmax=297.404 jw=3.194 delay=0.126 mu_r=0.049 roll=11.523 scale_r=1.007 scale_l=1.003 slide=0.782 scrub=0.468
+cost 34.5688 conv 0.0140 iz=8.193 h=0.309 mu=1.690 k0=0.293 a0=0.137 kp=765.404 ki=36.588 fmax=297.404 jw=3.194 delay=0.126 mu_r=0.049 roll=11.523 scale_r=1.007 scale_l=1.003 slide=0.782 scrub=0.468
+cost 34.5688 conv 0.0141 iz=8.193 h=0.309 mu=1.690 k0=0.293 a0=0.137 kp=765.404 ki=36.588 fmax=297.404 jw=3.194 delay=0.126 mu_r=0.049 roll=11.523 scale_r=1.007 scale_l=1.003 slide=0.782 scrub=0.468
+cost 34.5688 conv 0.0143 iz=8.193 h=0.309 mu=1.690 k0=0.293 a0=0.137 kp=765.404 ki=36.588 fmax=297.404 jw=3.194 delay=0.126 mu_r=0.049 roll=11.523 scale_r=1.007 scale_l=1.003 slide=0.782 scrub=0.468
+cost 34.4860 conv 0.0142 iz=12.028 h=0.363 mu=1.464 k0=0.295 a0=0.061 kp=1983.090 ki=910.179 fmax=401.014 jw=5.729 delay=0.140 mu_r=0.034 roll=6.289 scale_r=1.008 scale_l=1.005 slide=0.805 scrub=0.405
+cost 30.2361 conv 0.0137 iz=13.016 h=0.264 mu=1.892 k0=0.343 a0=0.123 kp=694.964 ki=162.250 fmax=413.819 jw=5.494 delay=0.085 mu_r=0.025 roll=11.196 scale_r=1.006 scale_l=1.005 slide=0.813 scrub=0.915
+cost 30.2361 conv 0.0131 iz=13.016 h=0.264 mu=1.892 k0=0.343 a0=0.123 kp=694.964 ki=162.250 fmax=413.819 jw=5.494 delay=0.085 mu_r=0.025 roll=11.196 scale_r=1.006 scale_l=1.005 slide=0.813 scrub=0.915
+done 30.23606217060707
+cost 51.1372 conv 0.0031 iz=11.911 h=0.117 mu=1.508 k0=0.241 a0=0.033 kp=585.960 ki=132.967 fmax=405.594 jw=2.851 delay=0.094 mu_r=0.042 roll=19.210 scale_r=1.008 scale_l=1.006 slide=0.440 scrub=5.000 scrub_k=0.200 a_r=0.100
+cost 48.9474 conv 0.0049 iz=14.814 h=0.412 mu=1.529 k0=0.365 a0=0.148 kp=1962.245 ki=132.967 fmax=426.172 jw=1.880 delay=0.122 mu_r=0.079 roll=19.210 scale_r=1.008 scale_l=1.002 slide=0.485 scrub=9.034 scrub_k=0.331 a_r=0.113
+cost 47.7324 conv 0.0095 iz=14.774 h=0.422 mu=1.286 k0=0.373 a0=0.309 kp=2530.206 ki=169.044 fmax=368.472 jw=5.146 delay=0.159 mu_r=0.067 roll=21.491 scale_r=1.014 scale_l=1.012 slide=0.777 scrub=22.585 scrub_k=0.469 a_r=0.426
+cost 47.7324 conv 0.0101 iz=14.774 h=0.422 mu=1.286 k0=0.373 a0=0.309 kp=2530.206 ki=169.044 fmax=368.472 jw=5.146 delay=0.159 mu_r=0.067 roll=21.491 scale_r=1.014 scale_l=1.012 slide=0.777 scrub=22.585 scrub_k=0.469 a_r=0.426
+cost 47.7324 conv 0.0116 iz=14.774 h=0.422 mu=1.286 k0=0.373 a0=0.309 kp=2530.206 ki=169.044 fmax=368.472 jw=5.146 delay=0.159 mu_r=0.067 roll=21.491 scale_r=1.014 scale_l=1.012 slide=0.777 scrub=22.585 scrub_k=0.469 a_r=0.426
+cost 47.7324 conv 0.0121 iz=14.774 h=0.422 mu=1.286 k0=0.373 a0=0.309 kp=2530.206 ki=169.044 fmax=368.472 jw=5.146 delay=0.159 mu_r=0.067 roll=21.491 scale_r=1.014 scale_l=1.012 slide=0.777 scrub=22.585 scrub_k=0.469 a_r=0.426
+cost 47.7324 conv 0.0129 iz=14.774 h=0.422 mu=1.286 k0=0.373 a0=0.309 kp=2530.206 ki=169.044 fmax=368.472 jw=5.146 delay=0.159 mu_r=0.067 roll=21.491 scale_r=1.014 scale_l=1.012 slide=0.777 scrub=22.585 scrub_k=0.469 a_r=0.426
+cost 46.9770 conv 0.0118 iz=14.342 h=0.456 mu=0.926 k0=0.340 a0=0.185 kp=2985.595 ki=2767.901 fmax=407.418 jw=6.743 delay=0.144 mu_r=0.077 roll=10.645 scale_r=1.008 scale_l=1.007 slide=0.822 scrub=14.500 scrub_k=0.443 a_r=0.234
+cost 45.3776 conv 0.0116 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0124 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0133 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0137 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0146 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0146 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3776 conv 0.0149 iz=8.879 h=0.316 mu=1.151 k0=0.306 a0=0.087 kp=2433.535 ki=182.937 fmax=346.233 jw=7.085 delay=0.128 mu_r=0.052 roll=16.159 scale_r=1.009 scale_l=1.008 slide=0.800 scrub=28.506 scrub_k=0.290 a_r=0.283
+cost 45.3633 conv 0.0149 iz=8.042 h=0.228 mu=1.119 k0=0.337 a0=0.147 kp=977.819 ki=233.155 fmax=345.439 jw=3.018 delay=0.150 mu_r=0.039 roll=6.155 scale_r=1.011 scale_l=1.008 slide=0.489 scrub=17.120 scrub_k=0.127 a_r=0.247
+cost 42.9686 conv 0.0138 iz=6.254 h=0.128 mu=1.018 k0=0.251 a0=0.146 kp=2601.676 ki=691.946 fmax=325.116 jw=2.819 delay=0.160 mu_r=0.066 roll=6.602 scale_r=1.009 scale_l=1.007 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.311
+cost 42.9686 conv 0.0139 iz=6.254 h=0.128 mu=1.018 k0=0.251 a0=0.146 kp=2601.676 ki=691.946 fmax=325.116 jw=2.819 delay=0.160 mu_r=0.066 roll=6.602 scale_r=1.009 scale_l=1.007 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.311
+cost 42.9686 conv 0.0143 iz=6.254 h=0.128 mu=1.018 k0=0.251 a0=0.146 kp=2601.676 ki=691.946 fmax=325.116 jw=2.819 delay=0.160 mu_r=0.066 roll=6.602 scale_r=1.009 scale_l=1.007 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.311
+cost 40.9677 conv 0.0142 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0145 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0146 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0145 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0142 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0142 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0151 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0155 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0154 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0148 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.9677 conv 0.0149 iz=6.254 h=0.115 mu=0.644 k0=0.209 a0=0.146 kp=1043.491 ki=578.107 fmax=319.603 jw=1.489 delay=0.124 mu_r=0.066 roll=14.865 scale_r=1.004 scale_l=1.003 slide=0.763 scrub=7.409 scrub_k=0.059 a_r=0.353
+cost 40.1921 conv 0.0144 iz=8.620 h=0.240 mu=0.993 k0=0.237 a0=0.147 kp=927.474 ki=379.039 fmax=375.855 jw=2.444 delay=0.099 mu_r=0.028 roll=14.965 scale_r=1.005 scale_l=1.004 slide=0.815 scrub=17.739 scrub_k=0.213 a_r=0.311
+cost 40.1921 conv 0.0135 iz=8.620 h=0.240 mu=0.993 k0=0.237 a0=0.147 kp=927.474 ki=379.039 fmax=375.855 jw=2.444 delay=0.099 mu_r=0.028 roll=14.965 scale_r=1.005 scale_l=1.004 slide=0.815 scrub=17.739 scrub_k=0.213 a_r=0.311
+cost 37.7091 conv 0.0132 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0132 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0138 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0141 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0142 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0141 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0142 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0143 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0144 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0149 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 37.7091 conv 0.0149 iz=8.280 h=0.177 mu=0.921 k0=0.230 a0=0.224 kp=904.395 ki=280.037 fmax=352.019 jw=4.688 delay=0.090 mu_r=0.019 roll=13.014 scale_r=1.004 scale_l=1.002 slide=0.909 scrub=8.317 scrub_k=0.079 a_r=0.243
+cost 35.6889 conv 0.0143 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0144 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0145 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0139 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0142 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0144 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0136 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 35.6889 conv 0.0137 iz=6.375 h=0.206 mu=1.004 k0=0.230 a0=0.259 kp=454.869 ki=146.524 fmax=365.074 jw=4.077 delay=0.091 mu_r=0.024 roll=10.241 scale_r=1.003 scale_l=1.003 slide=0.983 scrub=13.025 scrub_k=0.109 a_r=0.317
+cost 33.9007 conv 0.0127 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0126 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0127 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0131 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0130 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0130 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0133 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0130 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 33.9007 conv 0.0130 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+done 33.90065021235766
+cost 37.8876 conv 0.0036 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0088 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0102 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0119 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0117 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0117 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0110 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0107 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0112 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0115 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0114 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0111 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0107 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0104 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0105 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0108 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0110 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0112 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0113 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0108 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0106 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0101 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.8876 conv 0.0100 iz=7.982 h=0.202 mu=0.971 k0=0.154 a0=0.201 kp=504.968 ki=72.821 fmax=343.154 jw=3.470 delay=0.088 mu_r=0.001 roll=3.934 scale_r=1.003 scale_l=1.003 slide=0.855 scrub=11.989 scrub_k=0.098 a_r=0.252
+cost 37.6327 conv 0.0099 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0100 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0100 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0100 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0100 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0101 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0101 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0102 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0102 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.6327 conv 0.0103 iz=4.824 h=0.125 mu=0.791 k0=0.127 a0=0.300 kp=387.358 ki=19.540 fmax=352.534 jw=2.230 delay=0.082 mu_r=0.026 roll=15.265 scale_r=0.999 scale_l=0.996 slide=0.828 scrub=10.848 scrub_k=0.163 a_r=0.335
+cost 37.3301 conv 0.0108 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0108 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0105 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0106 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0107 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0107 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0108 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0110 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0113 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 37.3301 conv 0.0112 iz=10.391 h=0.187 mu=0.881 k0=0.250 a0=0.164 kp=477.939 ki=26.590 fmax=385.575 jw=3.928 delay=0.102 mu_r=0.033 roll=9.911 scale_r=1.001 scale_l=0.999 slide=0.854 scrub=7.802 scrub_k=0.064 a_r=0.383
+cost 35.2759 conv 0.0106 iz=9.056 h=0.262 mu=0.937 k0=0.199 a0=0.162 kp=527.922 ki=130.409 fmax=388.879 jw=3.152 delay=0.089 mu_r=0.019 roll=2.203 scale_r=0.999 scale_l=0.999 slide=0.866 scrub=9.912 scrub_k=0.081 a_r=0.297
+cost 35.2759 conv 0.0109 iz=9.056 h=0.262 mu=0.937 k0=0.199 a0=0.162 kp=527.922 ki=130.409 fmax=388.879 jw=3.152 delay=0.089 mu_r=0.019 roll=2.203 scale_r=0.999 scale_l=0.999 slide=0.866 scrub=9.912 scrub_k=0.081 a_r=0.297
+cost 34.2083 conv 0.0109 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0110 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0109 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0112 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0116 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0118 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0108 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0111 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0113 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0113 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0113 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0119 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0118 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0118 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+cost 34.2083 conv 0.0118 iz=8.314 h=0.125 mu=1.361 k0=0.247 a0=0.140 kp=568.182 ki=152.657 fmax=410.647 jw=4.364 delay=0.123 mu_r=0.003 roll=2.373 scale_r=1.000 scale_l=0.999 slide=0.954 scrub=10.528 scrub_k=0.088 a_r=0.335
+done 34.20827913134275

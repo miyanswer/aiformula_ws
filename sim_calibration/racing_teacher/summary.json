@@ -1,0 +1,157 @@
+{
+ "opt_alat06": {
+  "description": "横加速度 0.6 (シミュレータの最速の設定)",
+  "metrics": "KL=0.1468 argmax一致=79.1% ±1レーン以内=100.0%",
+  "plan": [
+   {
+    "v_max_kmh": 9.0,
+    "left_curve_lane_mean": 1.18,
+    "right_curve_lane_mean": 5.81,
+    "straight_lane_mean": 3.24,
+    "lane_moves_per_km": 96.7,
+    "curve_kmh": 8.63
+   },
+   {
+    "v_max_kmh": 10.0,
+    "left_curve_lane_mean": 1.14,
+    "right_curve_lane_mean": 5.79,
+    "straight_lane_mean": 2.77,
+    "lane_moves_per_km": 96.2,
+    "curve_kmh": 9.44
+   },
+   {
+    "v_max_kmh": 11.0,
+    "left_curve_lane_mean": 1.25,
+    "right_curve_lane_mean": 5.77,
+    "straight_lane_mean": 2.85,
+    "lane_moves_per_km": 119.6,
+    "curve_kmh": 10.16
+   }
+  ]
+ },
+ "opt_alat04": {
+  "description": "横加速度 0.4 (R15 で 9 km/h 相当. 外→内→外が残る)",
+  "metrics": "KL=0.1528 argmax一致=77.2% ±1レーン以内=100.0%",
+  "plan": [
+   {
+    "v_max_kmh": 9.0,
+    "left_curve_lane_mean": 1.27,
+    "right_curve_lane_mean": 5.77,
+    "straight_lane_mean": 3.4,
+    "lane_moves_per_km": 131.7,
+    "curve_kmh": 8.3
+   },
+   {
+    "v_max_kmh": 10.0,
+    "left_curve_lane_mean": 1.25,
+    "right_curve_lane_mean": 5.71,
+    "straight_lane_mean": 2.64,
+    "lane_moves_per_km": 115.9,
+    "curve_kmh": 8.9
+   },
+   {
+    "v_max_kmh": 11.0,
+    "left_curve_lane_mean": 1.34,
+    "right_curve_lane_mean": 5.66,
+    "straight_lane_mean": 2.55,
+    "lane_moves_per_km": 122.9,
+    "curve_kmh": 9.61
+   }
+  ]
+ },
+ "opt_table": {
+  "description": "半径ごとの曲がれる速度の表",
+  "metrics": "KL=0.1051 argmax一致=86.4% ±1レーン以内=99.9%",
+  "plan": [
+   {
+    "v_max_kmh": 9.0,
+    "left_curve_lane_mean": 1.03,
+    "right_curve_lane_mean": 5.95,
+    "straight_lane_mean": 3.12,
+    "lane_moves_per_km": 55.8,
+    "curve_kmh": 8.87
+   },
+   {
+    "v_max_kmh": 10.0,
+    "left_curve_lane_mean": 1.06,
+    "right_curve_lane_mean": 5.92,
+    "straight_lane_mean": 2.44,
+    "lane_moves_per_km": 56.0,
+    "curve_kmh": 9.27
+   },
+   {
+    "v_max_kmh": 11.0,
+    "left_curve_lane_mean": 1.13,
+    "right_curve_lane_mean": 5.79,
+    "straight_lane_mean": 2.42,
+    "lane_moves_per_km": 91.5,
+    "curve_kmh": 9.52
+   }
+  ]
+ },
+ "opt_table_lat": {
+  "description": "表 + 横移動の費用",
+  "metrics": "KL=0.0720 argmax一致=91.5% ±1レーン以内=99.9%",
+  "plan": [
+   {
+    "v_max_kmh": 9.0,
+    "left_curve_lane_mean": 1.07,
+    "right_curve_lane_mean": 5.87,
+    "straight_lane_mean": 2.94,
+    "lane_moves_per_km": 40.6,
+    "curve_kmh": 8.89
+   },
+   {
+    "v_max_kmh": 10.0,
+    "left_curve_lane_mean": 1.02,
+    "right_curve_lane_mean": 5.97,
+    "straight_lane_mean": 2.35,
+    "lane_moves_per_km": 31.0,
+    "curve_kmh": 9.18
+   },
+   {
+    "v_max_kmh": 11.0,
+    "left_curve_lane_mean": 1.06,
+    "right_curve_lane_mean": 5.84,
+    "straight_lane_mean": 2.41,
+    "lane_moves_per_km": 59.4,
+    "curve_kmh": 9.39
+   }
+  ]
+ },
+ "opt_table_margin": {
+  "description": "表 + 横移動の費用 + レーン2〜5の範囲",
+  "metrics": "KL=0.0357 argmax一致=95.8% ±1レーン以内=100.0%",
+  "plan": [
+   {
+    "v_max_kmh": 9.0,
+    "left_curve_lane_mean": 2.0,
+    "right_curve_lane_mean": 5.0,
+    "straight_lane_mean": 3.27,
+    "lane_moves_per_km": 24.4,
+    "curve_kmh": 8.96
+   },
+   {
+    "v_max_kmh": 10.0,
+    "left_curve_lane_mean": 2.0,
+    "right_curve_lane_mean": 5.0,
+    "straight_lane_mean": 2.79,
+    "lane_moves_per_km": 18.4,
+    "curve_kmh": 9.26
+   },
+   {
+    "v_max_kmh": 11.0,
+    "left_curve_lane_mean": 2.04,
+    "right_curve_lane_mean": 4.98,
+    "straight_lane_mean": 2.89,
+    "lane_moves_per_km": 26.1,
+    "curve_kmh": 9.48
+   }
+  ]
+ },
+ "rule_h3_a2": {
+  "description": "今のルール教師で 直線レーン3・カーブレーン2",
+  "metrics": "KL=0.0487 argmax一致=94.3% ±1レーン以内=99.0%",
+  "plan": []
+ }
+}

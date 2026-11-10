@@ -1,0 +1,132 @@
+{
+  "configById": {
+    "Image!camera": {
+      "cameraTopic": "/camera/image/compressed",
+      "imageMode": { "imageTopic": "/camera/image/compressed" },
+      "enabledMarkerTopics": [],
+      "mode": "fit",
+      "transformMarkers": false,
+      "synchronize": false
+    },
+    "3D!scene": {
+      "cameraState": {
+        "perspective": false,
+        "distance": 45.0,
+        "phi": 0.0,
+        "thetaOffset": 90.0,
+        "targetOffset": [12, 0, 0],
+        "target": [0, 0, 0],
+        "targetOrientation": [0, 0, 0, 1],
+        "fovy": 45.0,
+        "near": 0.5,
+        "far": 5000.0
+      },
+      "followMode": "follow-none",
+      "followTf": "run_start",
+      "scene": { "enableStats": false, "transforms": { "showLabel": false, "axisScale": 0.6 } },
+      "transforms": {
+        "frame:base_footprint": { "visible": true },
+        "frame:run_start": { "visible": true }
+      },
+      "topics": {
+        "/analysis/markers": { "visible": true },
+        "/aiformula_sensing/gyro_odometry_publisher/odom": { "visible": false }
+      }
+    },
+    "Plot!speed": {
+      "title": "速度 [m/s]",
+      "paths": [
+        { "value": "/analysis/speed_cmd_mps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "指令", "color": "#adb5bd" },
+        { "value": "/analysis/speed_wheel_mps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "車輪速", "color": "#4dabf7" },
+        { "value": "/analysis/speed_odom_mps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "odom", "color": "#69db7c" }
+      ],
+      "showLegend": true,
+      "xAxisVal": "timestamp"
+    },
+    "Plot!accel": {
+      "title": "前後の加速度 [m/s²]",
+      "paths": [
+        { "value": "/analysis/accel_wheel_mps2.data", "enabled": true, "timestampMethod": "receiveTime", "label": "車輪速の微分", "color": "#4dabf7" },
+        { "value": "/analysis/accel_imu_mps2.data", "enabled": true, "timestampMethod": "receiveTime", "label": "IMU", "color": "#ffa94d" }
+      ],
+      "showLegend": true,
+      "xAxisVal": "timestamp"
+    },
+    "Plot!yaw": {
+      "title": "ヨーレート [rad/s]",
+      "paths": [
+        { "value": "/analysis/yaw_rate_cmd_radps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "指令", "color": "#adb5bd" },
+        { "value": "/analysis/yaw_rate_radps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "実測 (IMU)", "color": "#ffc9c9" },
+        { "value": "/analysis/yaw_rate_smooth_radps.data", "enabled": true, "timestampMethod": "receiveTime", "label": "実測 0.2秒平均 (揺れ始めの判定)", "color": "#e03131" }
+      ],
+      "showLegend": true,
+      "xAxisVal": "timestamp"
+    },
+    "Plot!heading": {
+      "title": "odom の確認: 発進からの向き [deg]",
+      "paths": [
+        { "value": "/analysis/heading_odom_deg.data", "enabled": true, "timestampMethod": "receiveTime", "label": "odom", "color": "#69db7c" },
+        { "value": "/analysis/heading_imu_deg.data", "enabled": true, "timestampMethod": "receiveTime", "label": "IMU の積分", "color": "#ff6b6b" },
+        { "value": "/analysis/heading_odom_minus_imu_deg.data", "enabled": true, "timestampMethod": "receiveTime", "label": "差", "color": "#ffd43b" }
+      ],
+      "showLegend": true,
+      "xAxisVal": "timestamp"
+    },
+    "RawMessages!info": {
+      "topicPath": "/analysis/run_info.data",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "fontSize": 14
+    },
+    "RawMessages!state": {
+      "topicPath": "/analysis/state.data",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "fontSize": 14
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "linkedGlobalVariables": [],
+  "playbackConfig": { "speed": 0.5 },
+  "layout": {
+    "direction": "row",
+    "first": {
+      "direction": "column",
+      "first": "RawMessages!info",
+      "second": {
+        "direction": "column",
+        "first": "RawMessages!state",
+        "second": {
+          "direction": "column",
+          "first": "Image!camera",
+          "second": "3D!scene",
+          "splitPercentage": 45
+        },
+        "splitPercentage": 10
+      },
+      "splitPercentage": 13
+    },
+    "second": {
+      "direction": "column",
+      "first": {
+        "direction": "column",
+        "first": "Plot!speed",
+        "second": "Plot!accel",
+        "splitPercentage": 50
+      },
+      "second": {
+        "direction": "column",
+        "first": "Plot!yaw",
+        "second": "Plot!heading",
+        "splitPercentage": 50
+      },
+      "splitPercentage": 50
+    },
+    "splitPercentage": 55
+  }
+}
